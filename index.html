@@ -1010,6 +1010,51 @@
       opacity: 0.5;
     }
 
+    /* Collapsible Deep Dive */
+    #code-deep-dive {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      max-height: 15000px;
+      opacity: 1;
+    }
+
+    #code-deep-dive.collapsed {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      pointer-events: none;
+    }
+
+    .subtle-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.6rem 1.2rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s ease;
+      margin: 0.5rem 0 3rem 3.5rem;
+    }
+
+    .subtle-toggle:hover {
+      background: var(--bg);
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+    }
+
+    .subtle-toggle svg {
+      width: 16px;
+      height: 16px;
+    }
+
     /* Steps */
     .tutorial-step {
       position: relative;
@@ -1027,7 +1072,7 @@
       background: var(--border);
     }
 
-    .tutorial-step:last-child::before {
+    .tutorial-step:last-child:: {
       display: none;
     }
 
@@ -3440,7 +3485,7 @@
       <a href="#hf-intro">Hugging Face</a>
       <div class="dd">
         <a href="#tutorial">
-          Samples
+          Sample App
           <svg class="icon" style="width:14px;height:14px;opacity:0.6" viewBox="0 0 24 24">
             <polyline points="6 9 12 15 18 9" />
           </svg>
@@ -3450,13 +3495,16 @@
             ExamMind
             <span class="dd-dot"></span>
           </a>
-          <a href="#tutorial" id="dd-textlab" onclick="switchProjectTab('textlab')">
-            Text Intelligence Lab
-            <span class="dd-dot"></span>
-          </a>
         </div>
       </div>
-      <a href="#debugging">Debugging</a>
+      <a href="https://drive.google.com/drive/folders/1taIHqHVCi4eK13hrOC-_7bdZtZ8XCYoc?usp=sharing" target="_blank"
+        class="nav-btn"
+        style="margin-right: 0.5rem; background: var(--surface); color: var(--text-primary) !important; border: 1px solid var(--border); font-size: 0.9rem; padding: 0.45rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+        </svg>
+        All sample apps
+      </a>
       <a href="#app-prompt">AI Prompt</a>
 
 
@@ -3490,7 +3538,7 @@
         AIML Workshop · Beginner Friendly
       </div>
       <h1>FusionVerse 1.0</h1>
-      <p>Learn the basics of ML and build your first intelligent web app — step by step, from scratch.</p>
+      <p>Learn the basics of ML and build your first intelligent web app — step by step.</p>
       <div class="hero-tagline"><span id="typed-tagline"></span><span class="cursor"></span></div>
       <a href="#ml-intro" class="hero-btn">
         Start Learning
@@ -3512,10 +3560,12 @@
     </span>
     <h2>What is Machine Learning?</h2>
     <div class="lead-text" style="max-width: 900px;">
-      <p>Machine Learning is a branch of Artificial Intelligence in which a computer learns a pattern(model) from data points(training examples), instead of being directly programmed with fixed rules(steps).</p>
-      
+      <p>Machine Learning is a branch of Artificial Intelligence in which a computer learns a pattern(model) from data
+        points(training examples), instead of being directly programmed with fixed rules(steps).</p>
+
       <div style="margin-top: 1.5rem; padding-left: 0.5rem;">
-        <div style="display: flex; gap: 1rem; align-items: baseline; font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">
+        <div
+          style="display: flex; gap: 1rem; align-items: baseline; font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">
           <span style="color: var(--accent); font-size: 1.5rem; line-height: 1;">•</span>
           <span>In traditional computing, a computer is directly programmed with fixed rules and steps.</span>
         </div>
@@ -3534,11 +3584,14 @@
           style="font-size: 2.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.1;">
           The Core
           Types of ML Model</h3>
-        <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem auto;">Most machine
+        <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem auto;">Most
+          machine
           learning systems work using one of these core approaches.</p>
 
-        <div style="text-align: left; max-width: 900px; margin: 0 auto 1rem auto; color: var(--text-secondary); line-height: 1.8;">
-          <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">There are 3 types of ML Model:</p>
+        <div
+          style="text-align: left; max-width: 900px; margin: 0 auto 1rem auto; color: var(--text-secondary); line-height: 1.8;">
+          <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">There are 3 types of ML Model:
+          </p>
           <p style="margin: 0;">1. Linear Regression</p>
           <p style="margin: 0;">2. Classification</p>
           <p style="margin: 0;">3. Association</p>
@@ -3547,7 +3600,9 @@
 
       <!-- 1. Regression -->
       <div class="ml-card ml-card-1 card-less" data-type="01">
-        <p style="font-weight: 600; color: var(--accent); margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;">First we will look into Linear Regression</p>
+        <p
+          style="font-weight: 600; color: var(--accent); margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;">
+          First we will look into Linear Regression</p>
         <div class="ml-card-header">
           <div class="ml-card-icon">
             <svg class="icon" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -3562,9 +3617,12 @@
           </div>
         </div>
         <div class="ml-card-desc">
-          <p style="font-weight: 500; color: var(--accent); margin-bottom: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;">We are introducing an ML model in general to you using this type.</p>
+          <p
+            style="font-weight: 500; color: var(--accent); margin-bottom: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;">
+            We are introducing an ML model in general to you using this type.</p>
           <p>
-            Linear Regression is a ML model that predicts a value that can change continuously, like a number on a scale, based on pattern(knowledge) in data. <strong>f(x)</strong>
+            Linear Regression is a ML model that predicts a value that can change continuously, like a number on a
+            scale, based on pattern(knowledge) in data.
           </p>
         </div>
 
@@ -3572,129 +3630,132 @@
         <!-- Interactive Element: Regression Graph -->
         <div class="demo-container">
 
-          <!-- Formula Explanation -->
-          <div style="display: flex; gap: 1.25rem; margin: 1.5rem 0 2rem; flex-wrap: wrap;">
-            <div
-              style="flex: 1.2; min-width: 300px; background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-              <div
-                style="position: absolute; top: -20px; right: -20px; font-size: 8rem; opacity: 0.03; font-weight: 900; pointer-events: none;">
-                f(x)</div>
-              <div
-                style="font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; font-weight: 700;">
-                The Prediction Formula</div>
-              <div
-                style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-primary); margin-bottom: 1.25rem; letter-spacing: -1px;">
-                y = <span style="color: var(--accent);">m</span>x + <span style="color: #10b981;">c</span></div>
-              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; max-width: 400px;">
-                The equation represents a straight-line relationship between an input <strong>x</strong> and an output <strong>y</strong>, where <strong>m</strong> controls the slope and <strong>c</strong> controls the starting point.
+          <div
+            style="margin: 2.5rem 0 1.5rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <p
+                style="font-weight: 700; color: var(--text-primary); margin: 0; display: flex; align-items: center; gap: 0.6rem; font-size: 1rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round" style="width: 18px; height: 18px; color: var(--accent);">
+                  <path d="M21 21H3V3"></path>
+                  <path d="m19 8-5 2-4-3-4 5"></path>
+                  <circle cx="19" cy="8" r="1.5"></circle>
+                  <circle cx="14" cy="10" r="1.5"></circle>
+                  <circle cx="10" cy="7" r="1.5"></circle>
+                  <circle cx="6" cy="12" r="1.5"></circle>
+                </svg>
+                For dataset:
               </p>
             </div>
-
-            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1rem;">
-              <div
-                style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 1.25rem; transition: transform 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-                <div
-                  style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent); font-size: 1.2rem; flex-shrink: 0; border: 1px solid var(--accent-glow);">
-                  m</div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; color: var(--text-primary);">
-                    The Slope (Steepness)</div>
-                  <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">It tells the AI how
-                    much <strong>y</strong> should increase for every 1 step of <strong>x</strong>.</div>
-                </div>
-              </div>
-
-              <div
-                style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 1.25rem; transition: transform 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-                <div
-                  style="width: 40px; height: 40px; background: rgba(16, 185, 129, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #10b981; font-size: 1.2rem; flex-shrink: 0; border: 1px solid rgba(16, 185, 129, 0.15);">
-                  c</div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; color: var(--text-primary);">
-                    The Intercept (Starting Point)</div>
-                  <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">It tells the AI where
-                    the line starts on the vertical axis when <strong>x is zero</strong>.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Technical Formulas -->
-          <div
-            style="margin-bottom: 3rem; padding: 1.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
-            <div
-              style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1.75rem; font-weight: 700; display: flex; align-items: center; gap: 0.75rem;">
-              <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-              The Mathematical Proof (Linear Least Squares)
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
-              <!-- Slope Formula -->
-              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <span style="font-size: 0.9rem; color: var(--text-primary); font-weight: 700; letter-spacing: -0.2px;">
-                  Formula for Slope (m)</span>
-                <div
-                  style="font-family: var(--font-mono); font-size: 1.35rem; color: var(--text-primary); display: flex; align-items: center; gap: 1rem; background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
-                  <span style="color: var(--accent);">m</span> =
-                  <div
-                    style="display: inline-flex; flex-direction: column; align-items: center; font-size: 1.05rem; gap: 4px;">
-                    <span style="border-bottom: 2px solid var(--text-primary); padding: 0 12px; line-height: 1.6;">n&Sigma;xy
-                      - (&Sigma;x)(&Sigma;y)</span>
-                    <span style="padding: 0 12px; line-height: 1.6;">n&Sigma;x<sup>2</sup> - (&Sigma;x)<sup>2</sup></span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Intercept Formula -->
-              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <span style="font-size: 0.9rem; color: var(--text-primary); font-weight: 700; letter-spacing: -0.2px;">
-                  Formula for Intercept (c)</span>
-                <div
-                  style="font-family: var(--font-mono); font-size: 1.35rem; color: var(--text-primary); display: flex; align-items: center; gap: 1rem; background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
-                  <span style="color: #10b981;">c</span> =
-                  <div
-                    style="display: inline-flex; flex-direction: column; align-items: center; font-size: 1.05rem; gap: 4px;">
-                    <span style="border-bottom: 2px solid var(--text-primary); padding: 0 12px; line-height: 1.6;">&Sigma;y
-                      - <span style="color: var(--accent);">m</span>&Sigma;x</span>
-                    <span style="padding: 0 12px; line-height: 1.6;">n</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div style="margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
-                <span style="font-weight: 700; color: var(--text-primary);">n</span> = Number of data points
-              </div>
-              <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
-                <span style="font-weight: 700; color: var(--text-primary);">&Sigma;</span> = Sigma (Sum of all values)
-              </div>
-            </div>
-          </div>
-
-          <div style="margin: 2.5rem 0 1.5rem; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-            <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; font-size: 1rem;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; color: var(--accent);"><path d="M21 21H3V3"></path><path d="m19 8-5 2-4-3-4 5"></path><circle cx="19" cy="8" r="1.5"></circle><circle cx="14" cy="10" r="1.5"></circle><circle cx="10" cy="7" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle></svg>
-              For dataset:
-            </p>
             <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
-              On this type of data, a linear regression algorithm can fit in linear mode i.e. <strong style="color: var(--text-primary); background: var(--accent-glow); padding: 0.1rem 0.4rem; border-radius: 4px;">y = mx + c</strong>.<br>
+              On this type of data, the linear regression machine learning algorithm can fit/trains linear model i.e.
+              <strong
+                style="color: var(--text-primary); background: var(--accent-glow); padding: 0.1rem 0.4rem; border-radius: 4px;">ŷ
+                = mx + c</strong>.<br>
               These datapoints appear in a scattered diagram.
             </p>
+
+            <div
+              style="margin-top: 1.5rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg);">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                <thead>
+                  <tr style="background: var(--surface); border-bottom: 1px solid var(--border);">
+                    <th
+                      style="padding: 0.75rem 1rem; text-align: left; color: var(--text-primary); font-weight: 700; width: 50%;">
+                      X (Inputs)</th>
+                    <th style="padding: 0.75rem 1rem; text-align: left; color: var(--text-primary); font-weight: 700;">ŷ
+                      (Outputs)</th>
+                  </tr>
+                </thead>
+                <tbody style="font-family: var(--font-mono); color: var(--text-secondary);">
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">10.5</td>
+                    <td style="padding: 0.5rem 1rem;">15.2</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">22.3</td>
+                    <td style="padding: 0.5rem 1rem;">28.7</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">35.8</td>
+                    <td style="padding: 0.5rem 1rem;">32.1</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">48.2</td>
+                    <td style="padding: 0.5rem 1rem;">55.4</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">55.9</td>
+                    <td style="padding: 0.5rem 1rem;">48.6</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">68.4</td>
+                    <td style="padding: 0.5rem 1rem;">72.3</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">80.1</td>
+                    <td style="padding: 0.5rem 1rem;">85.9</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">92.5</td>
+                    <td style="padding: 0.5rem 1rem;">95.2</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">15.7</td>
+                    <td style="padding: 0.5rem 1rem;">20.4</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">40.3</td>
+                    <td style="padding: 0.5rem 1rem;">42.8</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.5rem 1rem;">60.6</td>
+                    <td style="padding: 0.5rem 1rem;">58.1</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.5rem 1rem;">85.2</td>
+                    <td style="padding: 0.5rem 1rem;">80.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style="margin-top: 1.5rem; padding: 1.5rem; background: #0d1117; border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; align-items: center;">
+              <p
+                style="font-size: 0.75rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono);">
+                Scattered Diagram : </p>
+              <div style="width: 100%; max-width: 320px; position: relative;">
+                <svg viewBox="-10 -10 120 120" style="width: 100%; height: auto; display: block;">
+                  <!-- Grid -->
+                  <line x1="0" y1="0" x2="0" y2="100" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" />
+                  <line x1="0" y1="100" x2="100" y2="100" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" />
+
+                  <!-- Data Points (Transposed for SVG coordinates) -->
+                  <circle cx="10.5" cy="84.8" r="2.5" fill="#3b82f6" />
+                  <circle cx="22.3" cy="71.3" r="2.5" fill="#3b82f6" />
+                  <circle cx="35.8" cy="67.9" r="2.5" fill="#3b82f6" />
+                  <circle cx="48.2" cy="44.6" r="2.5" fill="#3b82f6" />
+                  <circle cx="55.9" cy="51.4" r="2.5" fill="#3b82f6" />
+                  <circle cx="68.4" cy="27.7" r="2.5" fill="#3b82f6" />
+                  <circle cx="80.1" cy="14.1" r="2.5" fill="#3b82f6" />
+                  <circle cx="92.5" cy="4.8" r="2.5" fill="#3b82f6" />
+                  <circle cx="15.7" cy="79.6" r="2.5" fill="#3b82f6" />
+                  <circle cx="40.3" cy="57.2" r="2.5" fill="#3b82f6" />
+                  <circle cx="60.6" cy="41.9" r="2.5" fill="#3b82f6" />
+                  <circle cx="85.2" cy="19.5" r="2.5" fill="#3b82f6" />
+
+                  <!-- Labels -->
+                  <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="6"
+                    font-family="var(--font-mono)">Input (X)</text>
+                  <text x="-5" y="50" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="6"
+                    font-family="var(--font-mono)" transform="rotate(-90 -5 50)">Output (ŷ)</text>
+                </svg>
+              </div>
+            </div>
+
           </div>
 
-          <p class="demo-label">
-            <svg class="icon" style="width:14px;height:14px" viewBox="0 0 24 24">
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg> Interactive Demo: Regression Line
-          </p>
-          <p class="demo-hint" style="margin-bottom: 1.5rem;">
-            Watch how the regression line (the AI's "best guess") adjusts as we add more real-world data points to the
-            graph.
-          </p>
 
           <div class="regression-split">
             <!-- Left: Graph -->
@@ -3747,18 +3808,11 @@
                 style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Predict Price</button>
             </div>
             <div id="reg-predict-result" style="font-weight: 600; color: #10b981; font-size: 1.1rem;"></div>
-            <div id="reg-error-note"
-              style="width: 100%; display: none; font-size: 0.95rem; color: var(--text-secondary); margin-top: 0.75rem; font-style: italic; line-height: 1.5;">
-              Note: This prediction could be slightly off from the actual value due to statistical error.
-            </div>
-          </div>
-
-          <div id="reg-equation"
-            style="font-family: var(--font-mono); font-size: 1.1rem; color: #10b981; margin-top: 1.5rem; opacity: 0; transition: opacity 0.3s; padding: 1rem; background: rgba(16, 185, 129, 0.05); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.1);">
           </div>
 
           <!-- Note on Linear Regression -->
-          <div id="reg-theory-note" class="callout info" style="margin-top: 1rem; padding: 1rem 1.25rem; display: none; align-items: flex-start; gap: 0.75rem;">
+          <div id="reg-theory-note" class="callout info"
+            style="margin-top: 1.5rem; padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.75rem;">
             <div class="callout-icon" style="display: flex; align-items: center; margin-top: 2px;">
               <svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -3767,11 +3821,16 @@
               </svg>
             </div>
             <div class="callout-content">
-              <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
-                <li>A linear regression MLA can train or fit a linear model(y=mx+b) to these data points.</li>
-                <li>Linear regression MLA computes m and b from these data points.</li>
+              <ul
+                style="margin: 0; padding-left: 1.1rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
+                <li>A linear regression MLA can train or fit a linear model (y=mx+c) to these data points.</li>
+                <li>Linear regression MLA computes m and c from these data points.</li>
               </ul>
             </div>
+          </div>
+
+          <div id="reg-equation"
+            style="font-family: var(--font-mono); font-size: 1.1rem; color: #10b981; margin-top: 1rem; opacity: 0; transition: opacity 0.3s; padding: 1rem; background: rgba(16, 185, 129, 0.05); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.1);">
           </div>
         </div>
       </div>
@@ -3788,16 +3847,19 @@
           </div>
           <div>
             <span class="ml-card-tag">Type 02</span>
-            <h4 class="ml-card-title">Classification <span class="ml-card-subtitle">(Sorting)</span></h4>
+            <h4 class="ml-card-title">Classification</h4>
           </div>
         </div>
         <p class="ml-card-desc">
-          Classification ML models are similar to Regression ML models except that the outputs (y's) are discrete values.
+          A Classification ML models is similar to Regression ML models except that the outputs (y's) are discrete
+          values.
         </p>
-        <ul style="list-style: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+        <ul
+          style="list-style: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
           <li style="margin-bottom: 0.5rem;">Discrete values can only be from a finite set of values.</li>
           <li>Examples of finite set:
-            <div style="font-family: var(--font-mono); background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border); font-size: 0.85rem;">
+            <div
+              style="font-family: var(--font-mono); background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border); font-size: 0.85rem;">
               {Male, Female, Boy, Girl}<br>
               {Pass, Fail}<br>
               {A, B, C, D}<br>
@@ -3810,7 +3872,8 @@
 
     <!-- Professional Classification Visualizer -->
     <!-- Compact Professional Classification Visualizer -->
-    <div class="demo-container" style="margin-top: 2rem; border-top: 1px solid var(--border); padding: 2rem 1.5rem; position: relative; overflow: hidden;">
+    <div class="demo-container"
+      style="margin-top: 2rem; border-top: 1px solid var(--border); padding: 2rem 1.5rem; position: relative; overflow: hidden;">
       <p class="demo-label" style="position: relative; z-index: 1;">
         <svg class="icon" style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           stroke-width="2">
@@ -3819,71 +3882,94 @@
       </p>
 
       <div style="max-width: 750px; margin: 0 auto; position: relative; z-index: 1;">
-        
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-           
-           <!-- Compact Input Controller -->
-           <div style="width: 100%; max-width: 500px; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent);"></div>
-                    <span style="font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary);">Input Feature</span>
-                 </div>
-                 <div id="class-input-val" style="font-size: 1.8rem; font-weight: 900; color: var(--text-primary); letter-spacing: -1px; font-family: var(--font-mono);">5.0<span style="font-size: 0.8rem; margin-left: 3px; color: var(--text-secondary);">HRS</span></div>
-              </div>
 
-              <div class="custom-slider-container" style="position: relative;">
-                <input type="range" min="0" max="10" step="0.1" value="5" id="simple-class-slider" oninput="updateSimpleClass(this.value)" 
-                  style="width: 100%; cursor: pointer; accent-color: var(--accent);">
-                <div style="display: flex; justify-content: space-between; margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.15); text-transform: uppercase;">
-                   <span>Start</span>
-                   <span>End</span>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+
+          <!-- Compact Input Controller -->
+          <div
+            style="width: 100%; max-width: 500px; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div
+                  style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent);">
+                </div>
+                <span
+                  style="font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary);">Input
+                  Feature</span>
+              </div>
+              <div id="class-input-val"
+                style="font-size: 1.8rem; font-weight: 900; color: var(--text-primary); letter-spacing: -1px; font-family: var(--font-mono);">
+                5.0<span style="font-size: 0.8rem; margin-left: 3px; color: var(--text-secondary);">HRS</span></div>
+            </div>
+
+            <div class="custom-slider-container" style="position: relative;">
+              <input type="range" min="0" max="10" step="0.1" value="5" id="simple-class-slider"
+                oninput="updateSimpleClass(this.value)"
+                style="width: 100%; cursor: pointer; accent-color: var(--accent);">
+              <div
+                style="display: flex; justify-content: space-between; margin-top: 0.75rem; font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.15); text-transform: uppercase;">
+                <span>Start</span>
+                <span>End</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compact Neural Splitter -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; width: 100%;">
+
+            <!-- FAIL Gate -->
+            <div id="card-fail"
+              style="position: relative; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 1.5rem; transition: all 0.5s ease; filter: grayscale(1); opacity: 0.2;">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div
+                  style="width: 40px; height: 40px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                  <svg style="width:20px;height:20px;color:#ef4444" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </div>
+                <div>
+                  <div
+                    style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--text-secondary);">
+                    State 01</div>
+                  <div style="font-size: 1.2rem; font-weight: 800; color: #ef4444;">FAIL</div>
                 </div>
               </div>
-           </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Below threshold. Model
+                classifies as <strong>Negative</strong>.</p>
+            </div>
 
-           <!-- Compact Neural Splitter -->
-           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; width: 100%;">
-              
-              <!-- FAIL Gate -->
-              <div id="card-fail" style="position: relative; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 1.5rem; transition: all 0.5s ease; filter: grayscale(1); opacity: 0.2;">
-                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="width: 40px; height: 40px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                       <svg style="width:20px;height:20px;color:#ef4444" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                          <line x1="18" y1="6" x2="6" y2="18"></line>
-                          <line x1="6" y1="6" x2="18" y2="18"></line>
-                       </svg>
-                    </div>
-                    <div>
-                       <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--text-secondary);">State 01</div>
-                       <div style="font-size: 1.2rem; font-weight: 800; color: #ef4444;">FAIL</div>
-                    </div>
-                 </div>
-                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Below threshold. Model classifies as <strong>Negative</strong>.</p>
+            <!-- PASS Gate -->
+            <div id="card-pass"
+              style="position: relative; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; padding: 1.5rem; transition: all 0.5s ease; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div
+                  style="width: 40px; height: 40px; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                  <svg style="width:20px;height:20px;color:#10b981" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div
+                    style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--text-secondary);">
+                    State 02</div>
+                  <div style="font-size: 1.2rem; font-weight: 800; color: #10b981;">PASS</div>
+                </div>
               </div>
-
-              <!-- PASS Gate -->
-              <div id="card-pass" style="position: relative; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; padding: 1.5rem; transition: all 0.5s ease; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);">
-                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="width: 40px; height: 40px; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                       <svg style="width:20px;height:20px;color:#10b981" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                       </svg>
-                    </div>
-                    <div>
-                       <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--text-secondary);">State 02</div>
-                       <div style="font-size: 1.2rem; font-weight: 800; color: #10b981;">PASS</div>
-                    </div>
-                 </div>
-                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Meets requirements. Model classifies as <strong>Positive</strong>.</p>
-              </div>
-           </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Meets requirements. Model
+                classifies as <strong>Positive</strong>.</p>
+            </div>
+          </div>
         </div>
 
         <div style="margin-top: 2.5rem; display: flex; justify-content: center;">
-           <div style="background: rgba(255,255,255,0.02); padding: 0.5rem 1.25rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: var(--text-secondary);">
-              <span style="color: var(--accent); font-weight: 700;">Discrete Output:</span> The result is always either 0 or 1.
-           </div>
+          <div
+            style="background: rgba(255,255,255,0.02); padding: 0.5rem 1.25rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: var(--text-secondary);">
+            <span style="color: var(--accent); font-weight: 700;">Discrete Output:</span> The result is always either 0
+            or 1.
+          </div>
         </div>
       </div>
     </div>
@@ -3921,18 +4007,22 @@
         </div>
       </div>
       <p class="ml-card-desc">
-        The association ML models, both input (x's) and output (y's) are natural strings.
+        In an association ML model, both inputs (x's) and outputs (y's) are natural language strings.
       </p>
-      <ul style="list-style: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
-        <li>We are going to focus on this in this sample-collection & Tutorial.</li>
+      <ul
+        style="list-style: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+        <li>We are going to focus on this in this Sample-Collection & Tutorial.</li>
       </ul>
 
 
       <!-- Enhanced AI Pattern Generator -->
       <!-- Enhanced AI Pattern Generator -->
-      <div class="demo-container" style="background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 24px; position: relative; overflow: hidden;">
+      <div class="demo-container"
+        style="background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 24px; position: relative; overflow: hidden;">
         <!-- Background Ambient Glow -->
-        <div style="position: absolute; top: -20%; right: -10%; width: 300px; height: 300px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none;"></div>
+        <div
+          style="position: absolute; top: -20%; right: -10%; width: 300px; height: 300px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none;">
+        </div>
 
         <p class="demo-label" style="margin-bottom: 0.5rem; color: var(--text-primary);">
           <svg class="icon" style="width:14px;height:14px;color:var(--accent)" viewBox="0 0 24 24">
@@ -3945,36 +4035,48 @@
 
         <!-- Prompt Gallery -->
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem;">
-          <button onclick="generateText('haiku')" class="demo-btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.8rem; border-radius: 100px; background: var(--surface-brighter); border: 1px solid var(--border);">Code Haiku</button>
-          <button onclick="generateText('recipe')" class="demo-btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.8rem; border-radius: 100px; background: var(--surface-brighter); border: 1px solid var(--border);">AI Recipe</button>
-          <button onclick="generateText('code')" class="demo-btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.8rem; border-radius: 100px; background: var(--surface-brighter); border: 1px solid var(--border);">Python Logic</button>
+          <button onclick="generateText('haiku')" class="demo-btn-secondary"
+            style="padding: 0.6rem 1.25rem; font-size: 0.8rem; border-radius: 100px; background: var(--surface-brighter); border: 1px solid var(--border);">Code
+            Haiku</button>
+          <button onclick="generateText('recipe')" class="demo-btn-secondary"
+            style="padding: 0.6rem 1.25rem; font-size: 0.8rem; border-radius: 100px; background: var(--surface-brighter); border: 1px solid var(--border);">AI
+            Recipe</button>
+          <button onclick="generateText('code')" class="demo-btn-secondary"
+            style="padding: 0.6rem 1.25rem; font-size: 0.8rem; border-radius: 100px; background: var(--surface-brighter); border: 1px solid var(--border);">Python
+            Logic</button>
         </div>
 
         <!-- Neural Console -->
-        <div style="background: #0d1117; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+        <div
+          style="background: #0d1117; border: 1px solid #30363d; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
           <!-- Terminal Header -->
-          <div style="background: rgba(255,255,255,0.05); padding: 0.75rem 1.25rem; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between;">
-             <div style="display: flex; gap: 6px;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></div>
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></div>
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></div>
-             </div>
-             <div id="gen-status" style="font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #8b949e;">System Idle</div>
+          <div
+            style="background: rgba(255,255,255,0.05); padding: 0.75rem 1.25rem; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; gap: 6px;">
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></div>
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></div>
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></div>
+            </div>
+            <div id="gen-status"
+              style="font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #8b949e;">
+              System Idle</div>
           </div>
-          
+
           <!-- Output Area -->
-          <div id="gen-output" class="gen-output" style="min-height: 120px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; line-height: 1.8; color: #e6edf3; position: relative;">
+          <div id="gen-output" class="gen-output"
+            style="min-height: 120px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; line-height: 1.8; color: #e6edf3; position: relative;">
             <span style="opacity: 0.4; font-style: italic;">Select a prompt to begin generation...</span>
           </div>
         </div>
 
         <!-- Footer Note -->
         <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.75rem; opacity: 0.6;">
-           <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent);"></div>
-           <span style="font-size: 0.75rem; color: var(--text-secondary);">Model uses associative patterns to predict the next character.</span>
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent);"></div>
+          <span style="font-size: 0.75rem; color: var(--text-secondary);">Model uses associative patterns to predict the
+            next character.</span>
         </div>
       </div>
-      </div>
+    </div>
     </div>
     </div>
 
@@ -3989,14 +4091,14 @@
         const cardPass = document.getElementById('card-pass');
         const cardFail = document.getElementById('card-fail');
 
-        if(inputVal) {
+        if (inputVal) {
           inputVal.innerHTML = hours.toFixed(1) + '<span style="font-size: 0.9rem; margin-left: 4px; color: var(--text-secondary);">HRS</span>';
         }
-        
+
         // Threshold: 5.0 hours
         if (hours >= 5) {
           // PASS Gate Active
-          if(cardPass) {
+          if (cardPass) {
             cardPass.style.opacity = '1';
             cardPass.style.filter = 'grayscale(0)';
             cardPass.style.transform = 'translateY(-10px)';
@@ -4004,7 +4106,7 @@
             cardPass.style.boxShadow = '0 20px 40px rgba(16, 185, 129, 0.15), 0 0 20px rgba(16, 185, 129, 0.1)';
             cardPass.style.background = 'rgba(255, 255, 255, 0.03)';
           }
-          if(cardFail) {
+          if (cardFail) {
             cardFail.style.opacity = '0.2';
             cardFail.style.filter = 'grayscale(1)';
             cardFail.style.transform = 'translateY(0)';
@@ -4014,7 +4116,7 @@
           }
         } else {
           // FAIL Gate Active
-          if(cardFail) {
+          if (cardFail) {
             cardFail.style.opacity = '1';
             cardFail.style.filter = 'grayscale(0)';
             cardFail.style.transform = 'translateY(-10px)';
@@ -4022,7 +4124,7 @@
             cardFail.style.boxShadow = '0 20px 40px rgba(239, 68, 68, 0.15), 0 0 20px rgba(239, 68, 68, 0.1)';
             cardFail.style.background = 'rgba(255, 255, 255, 0.03)';
           }
-          if(cardPass) {
+          if (cardPass) {
             cardPass.style.opacity = '0.2';
             cardPass.style.filter = 'grayscale(1)';
             cardPass.style.transform = 'translateY(0)';
@@ -4111,14 +4213,15 @@
       const regDataBody = document.getElementById('reg-data-body');
       let regPoints = []; // Logical points {x: 0-100, y: 0-100}
       let regPredictions = []; // User predictions
+      let showRegressionLine = true;
 
 
       // Predefined dataset (logical values 1-100)
       const predefinedDataset = [
-        { x: 10, y: 15 }, { x: 22, y: 28 }, { x: 35, y: 32 },
-        { x: 48, y: 55 }, { x: 55, y: 48 }, { x: 68, y: 72 },
-        { x: 80, y: 85 }, { x: 92, y: 95 }, { x: 15, y: 20 },
-        { x: 40, y: 42 }, { x: 60, y: 58 }, { x: 85, y: 80 }
+        { x: 10.5, y: 15.2 }, { x: 22.3, y: 28.7 }, { x: 35.8, y: 32.1 },
+        { x: 48.2, y: 55.4 }, { x: 55.9, y: 48.6 }, { x: 68.4, y: 72.3 },
+        { x: 80.1, y: 85.9 }, { x: 92.5, y: 95.2 }, { x: 15.7, y: 20.4 },
+        { x: 40.3, y: 42.8 }, { x: 60.6, y: 58.1 }, { x: 85.2, y: 80.5 }
       ];
       let currentPointIdx = 0;
 
@@ -4169,7 +4272,6 @@
         document.getElementById('reg-prediction-ui').style.display = 'none';
         document.getElementById('reg-predict-result').innerHTML = '';
         document.getElementById('reg-predict-input').value = '';
-        document.getElementById('reg-error-note').style.display = 'none';
         drawRegressionGraph();
       }
 
@@ -4177,7 +4279,6 @@
       function predictRegression() {
         const inputEl = document.getElementById('reg-predict-input');
         const resultEl = document.getElementById('reg-predict-result');
-        const errorEl = document.getElementById('reg-error-note');
         const xVal = parseFloat(inputEl.value);
 
         if (isNaN(xVal) || xVal < 0 || xVal > 100) {
@@ -4187,9 +4288,8 @@
 
         const reg = computeLinearRegression(regPoints);
         if (reg) {
-          const yVal = (reg.m * xVal + reg.b).toFixed(2);
+          const yVal = (reg.m * xVal + reg.c).toFixed(2);
           resultEl.innerHTML = `Model predicts Price = <span style="color:#fff">${yVal}</span>`;
-          errorEl.style.display = 'block';
 
           // Add to predictions list and redraw table
           regPredictions.push({ x: xVal, y: yVal });
@@ -4212,8 +4312,8 @@
         const denom = (n * sumXX - sumX * sumX);
         if (denom === 0) return null;
         const m = (n * sumXY - sumX * sumY) / denom;
-        const b = (sumY - m * sumX) / n;
-        return { m, b };
+        const c = (sumY - m * sumX) / n;
+        return { m, c };
       }
 
       function drawRegressionGraph() {
@@ -4299,7 +4399,7 @@
         regPredictions.forEach((p) => {
           const cx = toCanvasX(p.x);
           const cy = toCanvasY(p.y);
-          
+
           // Predicted dot
           regCtx.beginPath();
           regCtx.arc(cx, cy, 6, 0, Math.PI * 2);
@@ -4326,11 +4426,12 @@
 
         const reg = computeLinearRegression(regPoints);
         const eqEl = document.getElementById('reg-equation');
+
         if (reg) {
           const xStart = 0;
           const xEnd = 100;
-          const yStart = reg.m * xStart + reg.b;
-          const yEnd = reg.m * xEnd + reg.b;
+          const yStart = reg.m * xStart + reg.c;
+          const yEnd = reg.m * xEnd + reg.c;
           const cx1 = toCanvasX(xStart);
           const cy1 = toCanvasY(yStart);
           const cx2 = toCanvasX(xEnd);
@@ -4351,12 +4452,16 @@
           regCtx.stroke();
 
           const m = reg.m.toFixed(2);
-          const b = reg.b.toFixed(2);
-          const sign = b >= 0 ? '+' : '-';
-          eqEl.innerHTML = `<strong>Model:</strong> y = <span style="color:#10b981">${m}</span>x ${sign} <span style="color:#10b981">${Math.abs(b)}</span>`;
+          const c = reg.c.toFixed(2);
+          const sign = reg.c >= 0 ? '+' : '-';
+          eqEl.innerHTML = `<strong>Model:</strong> ŷ = <span style="color:#10b981">${m}</span>x ${sign} <span style="color:#10b981">${Math.abs(c)}</span>`;
           eqEl.style.opacity = '1';
+          document.getElementById('reg-prediction-ui').style.display = 'flex';
         } else {
           eqEl.style.opacity = '0';
+          if (regPoints.length < 2) {
+            document.getElementById('reg-prediction-ui').style.display = 'none';
+          }
         }
         document.getElementById('reg-point-count').innerHTML = `<span>${regPoints.length}</span> data points plotted`;
 
@@ -4368,13 +4473,6 @@
           predictUI.style.display = 'none';
         }
 
-        // Show theory note after 2 points
-        const theoryNote = document.getElementById('reg-theory-note');
-        if (regPoints.length >= 2) {
-          theoryNote.style.display = 'flex';
-        } else {
-          theoryNote.style.display = 'none';
-        }
       }
 
 
@@ -4394,8 +4492,8 @@
 
         const outEl = document.getElementById('gen-output');
         const statusEl = document.getElementById('gen-status');
-        
-        if(statusEl) {
+
+        if (statusEl) {
           statusEl.innerText = 'Generating...';
           statusEl.style.color = 'var(--accent)';
         }
@@ -4420,7 +4518,7 @@
             setTimeout(typeChar, 30 + Math.random() * 40);
           } else {
             isGenerating = false;
-            if(statusEl) {
+            if (statusEl) {
               statusEl.innerText = 'Complete';
               statusEl.style.color = '#27c93f';
               setTimeout(() => {
@@ -4451,27 +4549,6 @@
       })();
     </script>
 
-    <div class="info-card stat-error-card">
-      <h3>
-        <svg class="icon" viewBox="0 0 24 24" style="color: #ef4444;">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-          <line x1="12" y1="9" x2="12" y2="13" />
-          <line x1="12" y1="17" x2="12.01" y2="17" />
-        </svg>
-        <span style="color: #ef4444;">The "Statistical Error" (Inference Error)</span>
-      </h3>
-      <p style="font-weight: 500;">AI doesn't "know" facts; it predicts them.</p>
-      <p>Technically, AI works on <strong>Probability Distributions</strong>. When our sample webapp generates a
-        question, the
-        model isn't "thinking"—it's calculating which word is statistically most likely to follow the previous one based
-        on its training data.</p>
-      <p><strong>Why this matters:</strong> This statistical nature leads to what we call <strong>Statistical
-          Error</strong> or
-        <strong>Hallucination</strong>. If the model sees a pattern that looks correct but isn't factually true, it
-        might confidently give you a wrong answer. Always remember: AI is a powerful <strong>prediction engine</strong>,
-        not a perfect truth machine.
-      </p>
-    </div>
   </section>
 
   <!-- Checkpoint: ML Basics -->
@@ -4569,14 +4646,20 @@
     <button class="rf-btn" id="rf-send" onclick="animateFlow()">Send Request</button>
 
     <!-- Base Routing Explanation -->
-    <div style="margin: 2rem 0; background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 16px;">
-      <p style="font-size: 0.85rem; font-family: var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Base Routing</p>
-      <p style="font-size: 1.05rem; margin-bottom: 1rem;">All models on Hugging Face are accessed via a single endpoint:</p>
-      <div style="background: rgba(0,0,0,0.2); padding: 0.75rem 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.9rem; border: 1px solid var(--border); color: #10b981; overflow-x: auto; margin-bottom: 1.25rem;">
+    <div
+      style="margin: 2rem 0; background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 16px;">
+      <p
+        style="font-size: 0.85rem; font-family: var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">
+        Base Routing</p>
+      <p style="font-size: 1.05rem; margin-bottom: 1rem;">All models on Hugging Face are accessed via a single routing
+        endpoint:</p>
+      <div
+        style="background: rgba(0,0,0,0.2); padding: 0.75rem 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.9rem; border: 1px solid var(--border); color: #10b981; overflow-x: auto; margin-bottom: 1.25rem;">
         https://router.huggingface.co/v1/chat/completions
       </div>
-      
-      <p style="font-size: 1rem; opacity: 0.8; margin-bottom: 1rem;">In the <strong>request body</strong>, you simply specify the <strong>model name</strong> to determine which AI "brain" responds:</p>
+
+      <p style="font-size: 1rem; opacity: 0.8; margin-bottom: 1rem;">In the <strong>request body</strong>, you simply
+        specify the <strong>model name</strong> to determine which ML Model responds:</p>
 
       <!-- From index.html Payload -->
       <div class="mac-window" style="margin: 0 0 1.25rem; background: #000; border: 1px solid rgba(255,255,255,0.1);">
@@ -4596,7 +4679,7 @@
 }</code></pre>
         </div>
       </div>
-      
+
       <div class="mac-window" style="margin: 0 0 1.5rem; background: #000;">
         <div class="mac-header" style="background: #121212;">
           <div class="mac-dots">
@@ -4632,8 +4715,9 @@
           </svg>
         </div>
         <div>
-          <h4>Explore Other Top Models</h4>
-          <p>Discover 10+ powerful AI models available on Hugging Face — with direct links to try them.</p>
+          <h4 style="margin-bottom: 0.5rem;">In Top Hugging Face Models:</h4>
+          <p style="color: var(--text-secondary); line-height: 1.5; font-size: 0.95rem;">Here are some other models, we
+            are handing out to you to use in your sample apps.</p>
         </div>
       </div>
       <svg class="icon models-trigger-arrow" style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -4641,23 +4725,6 @@
       </svg>
     </div>
 
-    <div style="margin: 3.5rem 0;">
-      <h3
-        style="display: flex; align-items: center; gap: 0.75rem; color: var(--accent); margin-bottom: 1.25rem; font-size: 1.5rem;">
-        <svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
-          <path
-            d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
-        </svg>
-        What is an API Key?
-      </h3>
-      <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">An <strong>API
-          Key</strong> (also called a "token") is like a <strong>password</strong> that proves you're
-        allowed to use Hugging Face's AI. It's a long string of letters that looks like: <code
-          class="inline-code">hf_abc123xyz...</code></p>
-      <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">You get one for free by creating an
-        account at <a href="https://huggingface.co" target="_blank"
-          style="color:var(--accent);text-decoration:none;font-weight:600">huggingface.co</a>.</p>
-    </div>
 
 
 
@@ -4699,13 +4766,8 @@
     </span>
     <h2>Let's Build a Sample WebApp</h2>
 
-    <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; margin: 2rem 0 2rem;">
-      We'll build two real AI sample WebApps from scratch — each teaching a fundamentally different approach to working
-      with
-      AI APIs. Pick a sample Web App tab below to explore its architecture, code, and concepts.
-    </p>
 
-    <div class="project-tabs">
+    <div class="project-tabs" style="justify-content: center;">
       <button class="project-tab active" onclick="switchProjectTab('exammind')" id="tab-exammind">
         <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
           <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -4713,20 +4775,12 @@
         </svg>
         ExamMind
       </button>
-      <button class="project-tab" onclick="switchProjectTab('textlab')" id="tab-textlab">
-        <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-          <polyline points="4 7 4 4 20 4 20 7" />
-          <line x1="9" y1="20" x2="15" y2="20" />
-          <line x1="12" y1="4" x2="12" y2="20" />
-        </svg>
-        Text Intelligence Lab
-      </button>
     </div>
 
     <!-- ═══ EXAMMIND TAB ═══ -->
     <div id="project-tab-exammind" class="project-panel active">
       <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">
-        <strong>ExamMind</strong> is an AI study assistant that converts notes into interactive quizzes. It uses LLMs to
+        <strong>ExamMind</strong> is an AI study assistant that converts notes into interactive quizzes. It uses Qwen to
         identify key concepts and generate real-time evaluations, demonstrating how AI can solve complex educational
         challenges with a simple web interface.
       </p>
@@ -4747,7 +4801,7 @@
             </p>
           </div>
         </div>
-        <a href="https://drive.google.com/drive/folders/18fZgWXtx6ntXpwfWehh9KI824k1DU7uL?usp=sharing" target="_blank"
+        <a href="https://drive.google.com/drive/folders/1h5QFI6JqClCt2k1NyaVejVNvRZaXhgAe?usp=sharing" target="_blank"
           class="download-link" title="Download  Folder">
           <svg class="icon" style="width:20px;height:20px" viewBox="0 0 24 24">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -4814,7 +4868,8 @@
         <div class="step-number">1</div>
         <h3>The Structure (The 3 Essentials)</h3>
         <p>Whether you're building ExamMind or something else, the sample webapp lives inside a folder (like here it's
-          <code class="inline-code">ExamMind</code>) which has just three main files:</p>
+          <code class="inline-code">ExamMind</code>) which has just three main files:
+        </p>
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
 
           <li
@@ -4860,6 +4915,16 @@
         </div>
       </div>
 
+      <!-- Toggle Button for Code Deep Dive -->
+      <button id="deep-dive-btn" class="subtle-toggle" onclick="toggleDeepDive()">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(-90deg);">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span id="deep-dive-btn-text"></span>
+      </button>
+
+      <div id="code-deep-dive" class="collapsed">
       <!-- STEP 2 -->
       <div class="tutorial-step">
         <div class="step-number">2</div>
@@ -4930,7 +4995,7 @@
       <div class="tutorial-step">
         <div class="step-number">3</div>
         <h3>Calling the Server: <code class="inline-code">callHF()</code></h3>
-        <p>The <code class="inline-code">callHF()</code> function is a reusable wrapper that handles the 
+        <p>The <code class="inline-code">callHF()</code> function is a reusable wrapper that handles the
           communication between your frontend and the proxy server.
         </p>
 
@@ -5052,132 +5117,6 @@ server.<span class="token-function">listen</span>(<span class="token-keyword">PO
               API key and handles the communication with Hugging Face, bypassing browser restrictions entirely.</p>
           </div>
         </div>
-
-        <!-- Interactive CORS Diagram -->
-        <div id="cors-em"
-          style="margin-top: 2rem; background: var(--bg); border-radius: 16px; border: 1px solid var(--border); overflow: hidden;">
-          <div style="display:flex; border-bottom: 1px solid var(--border);">
-            <button onclick="switchCorsTab('cors-em','failed')" id="cors-em-tab-failed"
-              style="flex:1; padding: 0.85rem 1rem; background: transparent; border: none; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; cursor: pointer; color: var(--text-primary); border-bottom: 2px solid #ef4444; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19.69 14a6.9 6.9 0 0 0 .31-2V5l-8-3-3.16 1.18" />
-                <path d="M4.73 4.73 4 5v7c0 6 8 10 8 10a20.29 20.29 0 0 0 5.62-4.38" />
-                <line x1="1" y1="1" x2="23" y2="23" />
-              </svg>
-              Without Proxy
-            </button>
-            <button onclick="switchCorsTab('cors-em','success')" id="cors-em-tab-success"
-              style="flex:1; padding: 0.85rem 1rem; background: transparent; border: none; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; cursor: pointer; color: var(--text-secondary); border-bottom: 2px solid transparent; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-              </svg>
-              With Proxy
-            </button>
-          </div>
-          <div id="cors-em-failed" style="padding: 2rem 1.5rem;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;">
-              <div style="text-align:center; min-width: 90px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#3b82f6;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-primary);">Browser</span>
-              </div>
-              <div
-                style="flex:1; min-width:60px; max-width:180px; height:4px; background:var(--border); border-radius:2px; position:relative; margin: 0 0.5rem; overflow:hidden;">
-                <div class="cors-packet-fail"
-                  style="width:20px;height:4px;border-radius:2px;background:#ef4444;position:absolute;left:-20px;top:0;">
-                </div>
-              </div>
-              <div style="text-align:center; min-width: 90px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(239,68,68,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem; border: 2px dashed #ef4444;">
-                  <svg style="width:28px;height:28px;color:#ef4444;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                  </svg>
-                </div><span style="font-size:0.65rem;font-weight:700;color:#ef4444;letter-spacing:0.05em;">CORS
-                  WALL</span>
-              </div>
-              <div
-                style="flex:1; min-width:60px; max-width:180px; height:4px; background:var(--border); border-radius:2px; margin: 0 0.5rem; opacity: 0.3;">
-              </div>
-              <div style="text-align:center; min-width: 90px; opacity: 0.4;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#f59e0b;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-secondary);">Hugging
-                  Face</span>
-              </div>
-            </div>
-            <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:#ef4444;font-weight:600;">&#128683;
-              Browser blocks the request &#8212; CORS policy violation</p>
-          </div>
-          <div id="cors-em-success" style="padding: 2rem 1.5rem; display: none;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;">
-              <div style="text-align:center; min-width: 80px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#3b82f6;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-primary);">Browser</span>
-              </div>
-              <div
-                style="flex:1; min-width:40px; max-width:120px; height:4px; background:var(--border); border-radius:2px; position:relative; margin: 0 0.4rem; overflow:hidden;">
-                <div class="cors-packet-ok"
-                  style="width:20px;height:4px;border-radius:2px;background:#10b981;position:absolute;left:-20px;top:0;">
-                </div>
-              </div>
-              <div style="text-align:center; min-width: 80px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem; border: 2px solid #10b981;">
-                  <svg style="width:28px;height:28px;color:#10b981;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-                    <line x1="6" y1="6" x2="6.01" y2="6" />
-                    <line x1="6" y1="18" x2="6.01" y2="18" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:#10b981;">Proxy Server</span>
-              </div>
-              <div
-                style="flex:1; min-width:40px; max-width:120px; height:4px; background:var(--border); border-radius:2px; position:relative; margin: 0 0.4rem; overflow:hidden;">
-                <div class="cors-packet-ok cors-packet-delayed"
-                  style="width:20px;height:4px;border-radius:2px;background:#10b981;position:absolute;left:-20px;top:0;">
-                </div>
-              </div>
-              <div style="text-align:center; min-width: 80px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#f59e0b;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-primary);">Hugging
-                  Face</span>
-              </div>
-            </div>
-            <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:#10b981;font-weight:600;">&#9989;
-              Server-to-server &#8212; no CORS restrictions!</p>
-          </div>
-        </div>
-
       </div>
 
       <!-- STEP 6 -->
@@ -5234,6 +5173,7 @@ req.<span class="token-function">on</span>(<span class="token-string">"data"</sp
         </div>
       </div>
 
+      </div>
 
       <!-- STEP 7 -->
       <div class="tutorial-step">
@@ -5279,13 +5219,6 @@ req.<span class="token-function">on</span>(<span class="token-string">"data"</sp
               <p>Type these commands into your terminal to start the proxy server.</p>
 
               <div class="mac-window" style="margin-top: 1rem;">
-                <button class="copy-btn" onclick="copyCommand('cd exammind\nnode server.js', this)">
-                  <svg class="icon" style="width:12px;height:12px;margin-right:4px;" viewBox="0 0 24 24">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  Copy Commands
-                </button>
                 <div class="mac-header">
                   <div class="mac-dots">
                     <div class="mac-dot r"></div>
@@ -5295,32 +5228,10 @@ req.<span class="token-function">on</span>(<span class="token-string">"data"</sp
                   <div class="mac-title">Terminal</div>
                 </div>
                 <div class="mac-body">
-                  <pre><code><span class="token-prompt">></span> <span class="token-keyword">cd</span> <span class="platform-content win" style="display:inline">"C:\path\to\exammind"</span><span class="platform-content mac" style="display:none">"~/Desktop/exammind"</span>
-<span class="token-prompt">></span> <span class="token-keyword">node</span> server.js
+                  <pre><code><span class="token-prompt">C:\AIML\users\[userName] ></span> <span class="token-keyword">cd</span> nodeproxy
+<span class="token-prompt">C:\AIML\users\[userName]\nodeproxy ></span> <span class="token-keyword">node</span> server.js
 
-<span class="token-string">✅ Proxy running at http://localhost:3000</span></code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="run-step">
-            <div class="step-indicator">3</div>
-            <div class="step-content">
-              <h4>Launch in Browser</h4>
-              <p>Your AI application is now being served locally. Open it to start using it!</p>
-
-              <div class="browser-mockup">
-                <div class="browser-bar">
-                  <div class="browser-dots">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <div class="browser-address">
-                    <span>http://localhost:3000</span>
-                    <a href="http://localhost:3000" target="_blank" class="browser-link">Visit Site →</a>
-                  </div>
+<span class="token-string">✅ ExamMind running at http://localhost:3000</span></code></pre>
                 </div>
               </div>
             </div>
@@ -5335,923 +5246,34 @@ req.<span class="token-function">on</span>(<span class="token-string">"data"</sp
           <div class="callout-content">
             <p><strong>Success!</strong> Your app is running. To stop the server later, press <code
                 class="inline-code">Ctrl + C</code> in the terminal.</p>
+
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 280px;">
+                <img src="with_input.jpeg" alt="App with Input"
+                  style="width: 100%; border-radius: 8px; border: 1px solid var(--border); cursor: pointer;"
+                  onclick="expandImage(this.src)">
+                <p
+                  style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; font-family: var(--font-mono);">
+                  [BEFORE: Generate Quiz]</p>
+              </div>
+              <div style="flex: 1; min-width: 280px;">
+                <img src="crcr_answer.jpeg" alt="App with Answer"
+                  style="width: 100%; border-radius: 8px; border: 1px solid var(--border); cursor: pointer;"
+                  onclick="expandImage(this.src)">
+                <p
+                  style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; font-family: var(--font-mono);">
+                  [AFTER: GENERATING QUIZ]</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div><!-- /project-tab-exammind -->
-
-    <!-- ═══ TEXT INTELLIGENCE LAB TAB ═══ -->
-    <div id="project-tab-textlab" class="project-panel">
-
-      <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; margin: 0 0 3rem;">
-        Now we'll completely different kind of AI app — one that uses <strong>specialized NLP models</strong>
-        (not a chatbot!) to analyze text for sentiment, emotions, and topic classification. Instead of chatting with an
-        LLM, we call <strong>pre-trained transformer models</strong> through a local proxy server.
-      </p>
-
-      <div class="download-card">
-        <div class="download-info">
-          <div class="download-icon-wrap">
-            <svg class="icon" viewBox="0 0 24 24">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-          </div>
-          <div class="download-text">
-            <h4>Download the Complete Source Code</h4>
-            <p>Get the full <strong>Text Intelligence Lab</strong> sample app folder to explore and run on your own
-              machine.</p>
-          </div>
-        </div>
-        <a href="https://drive.google.com/drive/folders/1F8CZ0i18mtgqilypNq5d1yvnPY1nymJM?usp=sharing" target="_blank"
-          class="download-link" title="Download Sample App Folder">
-          <svg class="icon" style="width:20px;height:20px" viewBox="0 0 24 24">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-        </a>
-      </div>
-
-      <br>
-
-      <!-- Prerequisites -->
-      <div
-        style="background: var(--surface); padding: 1.5rem 2rem; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 3rem;">
-        <h3
-          style="display: flex; align-items: center; gap: 0.6rem; color: var(--text-primary); margin-bottom: 0.25rem;">
-          <svg class="icon" viewBox="0 0 24 24" style="color: var(--accent); width: 22px; height: 22px;">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-            <polyline points="22 4 12 14.01 9 11.01" />
-          </svg>
-          Before We Start: Prerequisites
-        </h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem;">Ensure you have these essentials ready on your
-          machine.</p>
-
-        <div class="prerequisites-list">
-          <div class="prereq-list-item">
-            <div class="prereq-info">
-              <div class="prereq-dot"></div>
-              <div>
-                <h4>Node.js (LTS)</h4>
-                <p>Runtime engine to run JavaScript on your server.</p>
-              </div>
-            </div>
-            <a href="https://nodejs.org/" target="_blank" class="prereq-list-link">Download →</a>
-          </div>
-
-          <div class="prereq-list-item">
-            <div class="prereq-info">
-              <div class="prereq-dot"></div>
-              <div>
-                <h4>Notepad</h4>
-                <p>Basic code editor for development.</p>
-              </div>
-            </div>
-            <span class="prereq-list-link" style="opacity: 0.6; cursor: default;">Pre-installed</span>
-          </div>
-
-          <div class="prereq-list-item">
-            <div class="prereq-info">
-              <div class="prereq-dot"></div>
-              <div>
-                <h4>Hugging Face Token</h4>
-                <p>API key to access AI models.</p>
-              </div>
-            </div>
-            <a href="https://huggingface.co/settings/tokens" target="_blank" class="prereq-list-link">Get Token →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Key Difference Callout -->
-      <div class="callout mentor">
-        <div class="callout-icon">
-          <svg class="icon" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 16v-4" />
-            <path d="M12 8h.01" />
-          </svg>
-        </div>
-        <div class="callout-content">
-          <p><strong>Key Difference from ExamMind</strong></p>
-          <p>ExamMind uses a <strong>Chat Completions API</strong> (talking to an LLM). This sample app uses the
-            <strong>Inference API</strong> — calling specialized, pre-trained models that output structured scores and
-            labels instead of free-form text.
-          </p>
-        </div>
-      </div>
-
-      <!-- STEP 1 -->
-      <div class="tutorial-step">
-        <div class="step-number">1</div>
-        <h3>The Sample App Structure</h3>
-        <p>This sample app lives in a single folder with just two essential files. The key highlight: <strong>zero npm
-            dependencies</strong> — it uses only built-in Node.js modules, so no <code
-            class="inline-code">npm install</code> needed!</p>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
-          <li
-            style="display:flex; align-items:center; gap:1rem; background:var(--surface); padding:1.25rem; border-radius:12px; border:1px solid var(--border)">
-            <svg class="icon" style="color:var(--accent)" viewBox="0 0 24 24">
-              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" y1="13" x2="8" y2="13" />
-              <line x1="16" y1="17" x2="8" y2="17" />
-            </svg>
-            <span><strong>server.js</strong> — The CORS proxy (secure relay to HuggingFace)</span>
-          </li>
-          <li
-            style="display:flex; align-items:center; gap:1rem; background:var(--surface); padding:1.25rem; border-radius:12px; border:1px solid var(--border)">
-            <svg class="icon" style="color:var(--text-secondary)" viewBox="0 0 24 24">
-              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-              <polyline points="14 2 14 8 20 8" />
-              <polyline points="10 13 8 15 10 17" />
-              <polyline points="14 13 16 15 14 17" />
-            </svg>
-            <span><strong>index.html</strong> — The frontend UI with 3 NLP analysis tabs</span>
-          </li>
-
-        </ul>
-      </div>
-
-      <!-- Mentor Support Section -->
-      <div class="callout mentor">
-        <div class="callout-icon">
-          <svg class="icon" viewBox="0 0 24 24">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
-        </div>
-        <div class="callout-content">
-          <p><strong>Mentor Support</strong></p>
-          <p>During the session, mentors will be available to guide and support students. Students are encouraged to
-            reach
-            out to them at any time to clarify doubts, ask questions, or seek help in refining their ideas and
-            understanding.</p>
-        </div>
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="tutorial-step">
-        <div class="step-number">2</div>
-        <h3>The Proxy Server (<code class="inline-code">server.js</code>)</h3>
-        <p>This server does three things: <strong>(a)</strong> serves your HTML page, <strong>(b)</strong> handles CORS
-          preflight requests, and <strong>(c)</strong> forwards your text analysis requests to HuggingFace.</p>
-
-        <div class="mac-window">
-          <div class="mac-header">
-            <div class="mac-dots">
-              <div class="mac-dot r"></div>
-              <div class="mac-dot y"></div>
-              <div class="mac-dot g"></div>
-            </div>
-            <div class="mac-title">
-              <svg class="icon" viewBox="0 0 24 24">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                <polyline points="14 2 14 8 20 8" />
-              </svg>
-              server.js — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
-            </div>
-          </div>
-          <div class="mac-body">
-            <pre><code><span class="token-comment">// Zero dependencies — only built-in Node.js modules</span>
-<span class="anatomy-line" data-info="We import four built-in modules: &lt;code&gt;http&lt;/code&gt; to create our local server, &lt;code&gt;https&lt;/code&gt; to make secure requests to HuggingFace, &lt;code&gt;fs&lt;/code&gt; to read files, and &lt;code&gt;path&lt;/code&gt; to handle file paths safely."><span class="token-keyword">const</span> http  <span class="token-operator">=</span> <span class="token-function">require</span>(<span class="token-string">"http"</span>);
-<span class="token-keyword">const</span> https <span class="token-operator">=</span> <span class="token-function">require</span>(<span class="token-string">"https"</span>);
-<span class="token-keyword">const</span> fs    <span class="token-operator">=</span> <span class="token-function">require</span>(<span class="token-string">"fs"</span>);
-<span class="token-keyword">const</span> path  <span class="token-operator">=</span> <span class="token-function">require</span>(<span class="token-string">"path"</span>);</span>
-
-<span class="token-keyword">const</span> <span class="token-keyword">PORT</span>    <span class="token-operator">=</span> 3000;
-<span class="anatomy-line" data-info="This is HuggingFace's inference router hostname. All model requests go through this single domain — unlike ExamMind which uses the chat completions endpoint."><span class="token-keyword">const</span> HF_HOST <span class="token-operator">=</span> <span class="token-string">"router.huggingface.co"</span>;</span>
-
-<span class="token-comment">// Create the server</span>
-<span class="token-keyword">const</span> server <span class="token-operator">=</span> http.<span class="token-function">createServer</span>((req, res) <span class="token-keyword">=></span> {
-
-    <span class="token-comment">// PART A: Serve the HTML page</span>
-    <span class="anatomy-line" data-info="Same as ExamMind — when you visit localhost:3000, the server reads and returns your index.html file."><span class="token-keyword">if</span> (req.method <span class="token-operator">===</span> <span class="token-string">"GET"</span>) {
-        <span class="token-keyword">const</span> html <span class="token-operator">=</span> fs.<span class="token-function">readFileSync</span>(<span class="token-string">"index.html"</span>, <span class="token-string">"utf8"</span>);
-        res.<span class="token-function">writeHead</span>(200, { <span class="token-string">"Content-Type"</span>: <span class="token-string">"text/html"</span> });
-        res.<span class="token-function">end</span>(html);
-        <span class="token-keyword">return</span>;
-    }</span>
-
-    <span class="token-comment">// PART B: Handle CORS preflight</span>
-    <span class="anatomy-line" data-info="Before sending the real POST, browsers send an OPTIONS 'preflight' request asking: 'Am I allowed to do this?' We reply with headers that say 'Yes, allow POST from any origin with these headers.' Without this, the browser blocks everything."><span class="token-keyword">if</span> (req.method <span class="token-operator">===</span> <span class="token-string">"OPTIONS"</span>) {
-        res.<span class="token-function">writeHead</span>(204, {
-            <span class="token-string">"Access-Control-Allow-Origin"</span>: <span class="token-string">"*"</span>,
-            <span class="token-string">"Access-Control-Allow-Methods"</span>: <span class="token-string">"POST, GET, OPTIONS"</span>,
-            <span class="token-string">"Access-Control-Allow-Headers"</span>: <span class="token-string">"Content-Type, x-hf-token"</span>,
-        });
-        res.<span class="token-function">end</span>();
-        <span class="token-keyword">return</span>;
-    }</span>
-
-    <span class="token-comment">// PART C: Proxy to HuggingFace</span>
-    <span class="anatomy-line" data-info="The browser sends: POST /hf?model=owner/repo. We extract the model name from the URL and the token from a custom header, then forward everything to HuggingFace's inference API. The token travels as a header — never in the URL."><span class="token-keyword">if</span> (req.method <span class="token-operator">===</span> <span class="token-string">"POST"</span> <span class="token-operator">&&</span> req.url.<span class="token-function">startsWith</span>(<span class="token-string">"/hf"</span>)) {
-        <span class="token-keyword">const</span> modelName <span class="token-operator">=</span> <span class="token-comment">/* extracted from ?model= */</span>
-        <span class="token-keyword">const</span> token <span class="token-operator">=</span> req.headers[<span class="token-string">"x-hf-token"</span>];
-        <span class="token-comment">// Forward to: https://router.huggingface.co/hf-inference/models/{model}</span>
-    }</span>
-});</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 3 -->
-      <div class="tutorial-step">
-        <div class="step-number">3</div>
-        <h3>Why a Proxy? The CORS Problem</h3>
-        <p>You might wonder: <em>"Why can't I just call Hugging Face directly from my HTML page?"</em></p>
-        <p>There are two major reasons. First, the <strong>security problem</strong>: your API key would be visible in
-          the browser for anyone to steal. Second, the <strong>CORS problem</strong>: browsers block direct requests to
-          Hugging Face for security reasons.</p>
-
-
-        <p><strong>What is CORS?</strong> It's a browser security rule (Cross-Origin Resource Sharing). When your page
-          at <code class="inline-code">localhost:3000</code> tries to call another domain, the browser blocks it unless
-          that domain explicitly permits it. A proxy server sidesteps this because <strong>server-to-server requests
-            have no CORS restrictions</strong>.</p>
-
-        <div class="callout success">
-          <div class="callout-icon"><svg class="icon" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg></div>
-          <div class="callout-content">
-            <p><strong>The Solution:</strong> Our Node.js server acts as a "Proxy" (a middleman). It securely holds your
-              API key and handles the communication with Hugging Face, bypassing browser restrictions entirely.</p>
-          </div>
-        </div>
-
-        <!-- Interactive CORS Diagram -->
-        <div id="cors-tl"
-          style="margin-top: 2rem; background: var(--bg); border-radius: 16px; border: 1px solid var(--border); overflow: hidden;">
-          <div style="display:flex; border-bottom: 1px solid var(--border);">
-            <button onclick="switchCorsTab('cors-tl','failed')" id="cors-tl-tab-failed"
-              style="flex:1; padding: 0.85rem 1rem; background: transparent; border: none; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; cursor: pointer; color: var(--text-primary); border-bottom: 2px solid #ef4444; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19.69 14a6.9 6.9 0 0 0 .31-2V5l-8-3-3.16 1.18" />
-                <path d="M4.73 4.73 4 5v7c0 6 8 10 8 10a20.29 20.29 0 0 0 5.62-4.38" />
-                <line x1="1" y1="1" x2="23" y2="23" />
-              </svg>
-              Without Proxy
-            </button>
-            <button onclick="switchCorsTab('cors-tl','success')" id="cors-tl-tab-success"
-              style="flex:1; padding: 0.85rem 1rem; background: transparent; border: none; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; cursor: pointer; color: var(--text-secondary); border-bottom: 2px solid transparent; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-              </svg>
-              With Proxy
-            </button>
-          </div>
-          <div id="cors-tl-failed" style="padding: 2rem 1.5rem;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;">
-              <div style="text-align:center; min-width: 90px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#3b82f6;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-primary);">Browser</span>
-              </div>
-              <div
-                style="flex:1; min-width:60px; max-width:180px; height:4px; background:var(--border); border-radius:2px; position:relative; margin: 0 0.5rem; overflow:hidden;">
-                <div class="cors-packet-fail"
-                  style="width:20px;height:4px;border-radius:2px;background:#ef4444;position:absolute;left:-20px;top:0;">
-                </div>
-              </div>
-              <div style="text-align:center; min-width: 90px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(239,68,68,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem; border: 2px dashed #ef4444;">
-                  <svg style="width:28px;height:28px;color:#ef4444;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                  </svg>
-                </div><span style="font-size:0.65rem;font-weight:700;color:#ef4444;letter-spacing:0.05em;">CORS
-                  WALL</span>
-              </div>
-              <div
-                style="flex:1; min-width:60px; max-width:180px; height:4px; background:var(--border); border-radius:2px; margin: 0 0.5rem; opacity: 0.3;">
-              </div>
-              <div style="text-align:center; min-width: 90px; opacity: 0.4;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#f59e0b;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-secondary);">Hugging
-                  Face</span>
-              </div>
-            </div>
-            <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:#ef4444;font-weight:600;">&#128683;
-              Browser blocks the request &#8212; CORS policy violation</p>
-          </div>
-          <div id="cors-tl-success" style="padding: 2rem 1.5rem; display: none;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;">
-              <div style="text-align:center; min-width: 80px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#3b82f6;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-primary);">Browser</span>
-              </div>
-              <div
-                style="flex:1; min-width:40px; max-width:120px; height:4px; background:var(--border); border-radius:2px; position:relative; margin: 0 0.4rem; overflow:hidden;">
-                <div class="cors-packet-ok"
-                  style="width:20px;height:4px;border-radius:2px;background:#10b981;position:absolute;left:-20px;top:0;">
-                </div>
-              </div>
-              <div style="text-align:center; min-width: 80px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem; border: 2px solid #10b981;">
-                  <svg style="width:28px;height:28px;color:#10b981;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-                    <line x1="6" y1="6" x2="6.01" y2="6" />
-                    <line x1="6" y1="18" x2="6.01" y2="18" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:#10b981;">Proxy Server</span>
-              </div>
-              <div
-                style="flex:1; min-width:40px; max-width:120px; height:4px; background:var(--border); border-radius:2px; position:relative; margin: 0 0.4rem; overflow:hidden;">
-                <div class="cors-packet-ok cors-packet-delayed"
-                  style="width:20px;height:4px;border-radius:2px;background:#10b981;position:absolute;left:-20px;top:0;">
-                </div>
-              </div>
-              <div style="text-align:center; min-width: 80px;">
-                <div
-                  style="width:56px;height:56px;border-radius:14px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;">
-                  <svg style="width:28px;height:28px;color:#f59e0b;" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  </svg>
-                </div><span style="font-size:0.75rem;font-weight:600;color:var(--text-primary);">Hugging
-                  Face</span>
-              </div>
-            </div>
-            <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:#10b981;font-weight:600;">&#9989;
-              Server-to-server &#8212; no CORS restrictions!</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 4 -->
-      <div class="tutorial-step">
-        <div class="step-number">4</div>
-        <h3>The Proxy: Forwarding to HuggingFace</h3>
-        <p>Here's the core of the proxy — where the server takes your browser's request and forwards it to HuggingFace
-          with the proper authentication.</p>
-
-        <div class="mac-window">
-          <div class="mac-header">
-            <div class="mac-dots">
-              <div class="mac-dot r"></div>
-              <div class="mac-dot y"></div>
-              <div class="mac-dot g"></div>
-            </div>
-            <div class="mac-title">
-              <svg class="icon" viewBox="0 0 24 24">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                <polyline points="14 2 14 8 20 8" />
-              </svg>
-              server.js — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
-            </div>
-          </div>
-          <div class="mac-body">
-            <pre><code><span class="token-comment">// Inside the POST handler...</span>
-<span class="anatomy-line" data-info="We read the model name from the URL query parameter (?model=owner/repo) and the HuggingFace token from a custom request header. This keeps the token out of the URL for security."><span class="token-keyword">const</span> urlObj    <span class="token-operator">=</span> <span class="token-keyword">new</span> <span class="token-function">URL</span>(req.url, `http://localhost:${<span class="token-keyword">PORT</span>}`);
-<span class="token-keyword">const</span> modelName <span class="token-operator">=</span> urlObj.searchParams.<span class="token-function">get</span>(<span class="token-string">"model"</span>);
-<span class="token-keyword">const</span> token     <span class="token-operator">=</span> req.headers[<span class="token-string">"x-hf-token"</span>];</span>
-
-<span class="anatomy-line" data-info="We build the path to the specific model on HuggingFace's inference API. For example, if model is 'cardiffnlp/twitter-roberta-base-sentiment-latest', the full path becomes '/hf-inference/models/cardiffnlp/twitter-roberta-base-sentiment-latest'."><span class="token-keyword">const</span> hfPath <span class="token-operator">=</span> <span class="token-string">`/hf-inference/models/${modelName}`</span>;</span>
-
-<span class="token-comment">// Collect the request body</span>
-<span class="token-keyword">let</span> body <span class="token-operator">=</span> <span class="token-string">""</span>;
-req.<span class="token-function">on</span>(<span class="token-string">"data"</span>, chunk <span class="token-keyword">=></span> (body <span class="token-operator">+=</span> chunk));
-req.<span class="token-function">on</span>(<span class="token-string">"end"</span>, () <span class="token-keyword">=></span> {
-
-    <span class="token-comment">// Forward to HuggingFace with authentication</span>
-    <span class="anatomy-line" data-info="This is the key part — we use Node's built-in &lt;code&gt;https.request&lt;/code&gt; to call HuggingFace. The &lt;code&gt;Authorization: Bearer&lt;/code&gt; header is added here on the server side, keeping the token safe. The browser never directly contacts HuggingFace."><span class="token-keyword">const</span> options <span class="token-operator">=</span> {
-        hostname: HF_HOST,
-        path:     hfPath,
-        method:   <span class="token-string">"POST"</span>,
-        headers:  {
-            <span class="token-string">"Authorization"</span>:  <span class="token-string">`Bearer ${token}`</span>,
-            <span class="token-string">"Content-Type"</span>:   <span class="token-string">"application/json"</span>,
-        },
-    };
-    <span class="token-keyword">const</span> hfReq <span class="token-operator">=</span> https.<span class="token-function">request</span>(options, (hfRes) <span class="token-keyword">=></span> {
-        <span class="token-comment">// ... relay response back to browser ...</span>
-    });</span>
-});</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 5 -->
-      <div class="tutorial-step">
-        <div class="step-number">5</div>
-        <h3>The Frontend: Calling the Proxy</h3>
-        <p>The frontend sends requests to your local proxy instead of calling HuggingFace directly. Here's the helper
-          function that all three tabs use:</p>
-
-        <div class="mac-window">
-          <div class="mac-header">
-            <div class="mac-dots">
-              <div class="mac-dot r"></div>
-              <div class="mac-dot y"></div>
-              <div class="mac-dot g"></div>
-            </div>
-            <div class="mac-title">
-              <svg class="icon" viewBox="0 0 24 24">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                <polyline points="14 2 14 8 20 8" />
-                <polyline points="10 13 8 15 10 17" />
-                <polyline points="14 13 16 15 14 17" />
-              </svg>
-              index.html — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
-            </div>
-          </div>
-          <div class="mac-body">
-            <pre><code><span class="token-comment">// Reusable helper — all 3 tabs call this</span>
-<span class="anatomy-line" data-info="This function takes a model name and a JSON payload, sends it to our local proxy at &lt;code&gt;/hf?model=...&lt;/code&gt;, and returns the parsed response. The token travels as a custom header &lt;code&gt;x-hf-token&lt;/code&gt; — not in the body like ExamMind."><span class="token-keyword">async function</span> <span class="token-function">hfProxy</span>(model, payload) {
-    <span class="token-keyword">const</span> token <span class="token-operator">=</span> <span class="token-function">getToken</span>();
-    <span class="token-keyword">const</span> res <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-function">fetch</span>(
-        <span class="token-string">`/hf?model=${encodeURIComponent(model)}`</span>, {
-        method: <span class="token-string">'POST'</span>,
-        headers: {
-            <span class="token-string">'Content-Type'</span>: <span class="token-string">'application/json'</span>,
-            <span class="token-string">'x-hf-token'</span>: token
-        },
-        body: JSON.<span class="token-function">stringify</span>(payload)
-    });</span>
-    <span class="token-keyword">return await</span> res.<span class="token-function">json</span>();
-}
-
-<span class="token-comment">// Example: Calling the sentiment model</span>
-<span class="anatomy-line" data-info="Each tab calls &lt;code&gt;hfProxy&lt;/code&gt; with a different model. The sentiment tab uses RoBERTa, the emotion tab uses DistilRoBERTa, and zero-shot uses BART. The payload is simple: &lt;code&gt;{ inputs: text }&lt;/code&gt; — much simpler than ExamMind's messages array!"><span class="token-keyword">const</span> data <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-function">hfProxy</span>(
-    <span class="token-string">'cardiffnlp/twitter-roberta-base-sentiment-latest'</span>,
-    { inputs: <span class="token-string">"The product launch was a massive success!"</span> }
-);</span></code></pre>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- STEP 6 -->
-      <div class="tutorial-step">
-        <div class="step-number">6</div>
-        <h3>Structured Responses (Not Free Text)</h3>
-        <p>Unlike ExamMind where the AI returns free-form text, Inference API models return <strong>structured JSON with
-            scores</strong>. Here's what sentiment analysis returns:</p>
-
-        <div class="json-explorer">
-          <div class="je-header">
-            <svg viewBox="0 0 24 24" style="width:16px;height:16px">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-            HuggingFace Inference API Response
-          </div>
-          <div><span class="je-bracket">[</span></div>
-          <div class="je-indent">
-            <div><span class="je-bracket">[</span></div>
-            <div class="je-indent">
-              <div><span class="je-bracket">{</span> <span class="je-key">"label"</span>: <span
-                  class="je-str">"positive"</span>, <span class="je-key">"score"</span>: <span
-                  class="je-num">0.943</span>
-                <span class="je-bracket">}</span>,
-              </div>
-              <div><span class="je-bracket">{</span> <span class="je-key">"label"</span>: <span
-                  class="je-str">"neutral"</span>, <span class="je-key">"score"</span>: <span
-                  class="je-num">0.042</span>
-                <span class="je-bracket">}</span>,
-              </div>
-              <div><span class="je-bracket">{</span> <span class="je-key">"label"</span>: <span
-                  class="je-str">"negative"</span>, <span class="je-key">"score"</span>: <span
-                  class="je-num">0.015</span>
-                <span class="je-bracket">}</span>
-                <span class="je-annotation">← Clean numbers, not messy text to parse!</span>
-              </div>
-            </div>
-            <div><span class="je-bracket">]</span></div>
-          </div>
-          <div><span class="je-bracket">]</span></div>
-        </div>
-
-        <p>The code then visualizes these scores as color-coded bars:</p>
-
-        <div class="mac-window">
-          <div class="mac-header">
-            <div class="mac-dots">
-              <div class="mac-dot r"></div>
-              <div class="mac-dot y"></div>
-              <div class="mac-dot g"></div>
-            </div>
-            <div class="mac-title">
-              <svg class="icon" viewBox="0 0 24 24">
-                <polyline points="10 13 8 15 10 17" />
-                <polyline points="14 13 16 15 14 17" />
-              </svg>
-              index.html — rendering results
-            </div>
-          </div>
-          <div class="mac-body">
-            <pre><code><span class="anatomy-line" data-info="We sort results by score (highest first) and pick the top result. Each label gets a color: green for positive, red for negative, gray for neutral. This makes it instantly readable."><span class="token-keyword">const</span> results <span class="token-operator">=</span> [...data[0]].<span class="token-function">sort</span>((a,b) <span class="token-keyword">=></span> b.score <span class="token-operator">-</span> a.score);
-<span class="token-keyword">const</span> top <span class="token-operator">=</span> results[0];</span>
-<span class="token-keyword">const</span> COLORS <span class="token-operator">=</span> {
-    positive: <span class="token-string">'#3a7d2c'</span>,  <span class="token-comment">// green</span>
-    negative: <span class="token-string">'#c53030'</span>,  <span class="token-comment">// red</span>
-    neutral:  <span class="token-string">'#888680'</span>,  <span class="token-comment">// gray</span>
-};
-
-<span class="token-comment">// Render bars for each label</span>
-<span class="anatomy-line" data-info="For each result, we create a progress bar where the width is the score as a percentage. A score of 0.943 becomes a bar at 94% width — giving an instant visual sense of the model's confidence.">results.<span class="token-function">forEach</span>(r <span class="token-keyword">=></span> {
-    <span class="token-keyword">const</span> pct <span class="token-operator">=</span> Math.<span class="token-function">round</span>(r.score <span class="token-operator">*</span> 100);
-    <span class="token-comment">// bar-fill width = pct%, colored by label</span>
-});</span></code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 7 -->
-      <div class="tutorial-step">
-        <div class="step-number">7</div>
-        <h3>Zero-Shot Classification (No Training Needed)</h3>
-        <p>The most powerful tab is <strong>zero-shot classification</strong>. Unlike sentiment or emotion models that
-          are trained on fixed labels, zero-shot lets you <strong>define your own categories on the fly</strong>.</p>
-
-        <div class="callout info">
-          <div class="callout-icon"><svg class="icon" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4" />
-              <path d="M12 8h.01" />
-            </svg></div>
-          <div class="callout-content">
-            <p><strong>What is zero-shot?</strong> The model (BART-large-MNLI) was trained to understand language
-              <em>relationships</em>, not specific categories. So you can give it any labels — "politics", "cooking",
-              "space" — and it will score how well the text matches each one. No retraining required!
-            </p>
-          </div>
-        </div>
-
-        <div class="mac-window">
-          <div class="mac-header">
-            <div class="mac-dots">
-              <div class="mac-dot r"></div>
-              <div class="mac-dot y"></div>
-              <div class="mac-dot g"></div>
-            </div>
-            <div class="mac-title">
-              <svg class="icon" viewBox="0 0 24 24">
-                <polyline points="10 13 8 15 10 17" />
-                <polyline points="14 13 16 15 14 17" />
-              </svg>
-              index.html — zero-shot payload
-            </div>
-          </div>
-          <div class="mac-body">
-            <pre><code><span class="anatomy-line" data-info="The zero-shot payload has two parts: &lt;code&gt;inputs&lt;/code&gt; (your text) and &lt;code&gt;candidate_labels&lt;/code&gt; (the categories to match against). You can add or remove labels dynamically — the model handles any set of categories."><span class="token-keyword">const</span> data <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-function">hfProxy</span>(
-    <span class="token-string">'facebook/bart-large-mnli'</span>,
-    {
-        inputs: <span class="token-string">"The striker scored in the 89th minute"</span>,
-        parameters: {
-            candidate_labels: [
-                <span class="token-string">"politics"</span>, <span class="token-string">"sports"</span>, <span class="token-string">"science"</span>,
-                <span class="token-string">"technology"</span>, <span class="token-string">"health"</span>
-            ]
-        }
-    }
-);</span>
-
-<span class="token-comment">// Response: { labels: ["sports", ...], scores: [0.97, ...] }</span></code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- Checkpoint -->
-      <div style="max-width:800px; margin:0 auto; padding: 0 0 2rem;">
-        <div class="checkpoint" id="cp-cors">
-          <div class="checkpoint-q">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-            Quick Check: Why does this sample app need a proxy server?
-          </div>
-          <div class="cp-options">
-            <div class="cp-opt" onclick="checkCP(this,'cp-cors','wrong')"><span class="cp-letter">A</span> To make the
-              code run faster</div>
-            <div class="cp-opt" onclick="checkCP(this,'cp-cors','correct')"><span class="cp-letter">B</span> Because
-              browsers block cross-origin requests to HuggingFace (CORS)</div>
-            <div class="cp-opt" onclick="checkCP(this,'cp-cors','wrong')"><span class="cp-letter">C</span> Because
-              Node.js cannot read HTML files</div>
-          </div>
-          <div class="cp-feedback" id="cp-cors-fb"></div>
-        </div>
-      </div>
-
-      <!-- STEP 8 -->
-      <div class="tutorial-step">
-        <div class="step-number">8</div>
-        <h3>The 3 NLP Models Used</h3>
-        <p>Each tab uses a different specialized transformer model:</p>
-
-        <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
-          <div
-            style="display:flex; align-items:center; gap:1rem; background:var(--surface); padding:1.25rem; border-radius:12px; border:1px solid var(--border)">
-            <div
-              style="width:36px;height:36px;border-radius:10px;background:rgba(58,125,44,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#3a7d2c;font-size:1.2rem;">
-              😊</div>
-            <div>
-              <strong style="font-size:0.9rem;">Sentiment Analysis</strong>
-              <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);margin-top:2px;">
-                cardiffnlp/twitter-roberta-base-sentiment-latest</div>
-              <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:4px;">Classifies text as <strong
-                  style="color:#3a7d2c">positive</strong>, <strong style="color:#c53030">negative</strong>, or <strong
-                  style="color:#888">neutral</strong></div>
-            </div>
-          </div>
-          <div
-            style="display:flex; align-items:center; gap:1rem; background:var(--surface); padding:1.25rem; border-radius:12px; border:1px solid var(--border)">
-            <div
-              style="width:36px;height:36px;border-radius:10px;background:rgba(37,99,235,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#2563eb;font-size:1.2rem;">
-              🎭</div>
-            <div>
-              <strong style="font-size:0.9rem;">Emotion Detection</strong>
-              <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);margin-top:2px;">
-                j-hartmann/emotion-english-distilroberta-base</div>
-              <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:4px;">Detects 7 emotions: joy,
-                sadness, anger, fear, surprise, disgust, neutral</div>
-            </div>
-          </div>
-          <div
-            style="display:flex; align-items:center; gap:1rem; background:var(--surface); padding:1.25rem; border-radius:12px; border:1px solid var(--border)">
-            <div
-              style="width:36px;height:36px;border-radius:10px;background:rgba(124,58,237,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#7c3aed;font-size:1.2rem;">
-              🏷️</div>
-            <div>
-              <strong style="font-size:0.9rem;">Zero-Shot Classification</strong>
-              <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);margin-top:2px;">
-                facebook/bart-large-mnli</div>
-              <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:4px;">Classifies text into
-                <em>any</em> categories you define — no training needed
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 9 -->
-      <div class="tutorial-step">
-        <div class="step-number">9</div>
-        <h3>How to Run It</h3>
-        <p>Follow this interactive guide to launch your application.</p>
-
-        <div class="os-selector" style="margin-top: 1.5rem;">
-          <button class="os-btn active" data-os="win" onclick="setPlatform('win')">
-            <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M0 3.449L9.75 2.1V11.7H0V3.449zm0 17.1L9.75 21.9V12.3H0v8.249zM11.25 1.8L24 0v11.7H11.25V1.8zm0 20.4L24 24V12.3H11.25v9.9z" />
-            </svg>
-            Windows
-          </button>
-          <button class="os-btn" data-os="mac" onclick="setPlatform('mac')">
-            <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M17.05 20.28c-.98.95-2.05 1.78-3.19 1.76-1.07-.02-1.42-.68-2.67-.68-1.24 0-1.65.66-2.65.68-1.12.02-2.31-.93-3.27-1.87C3.3 18.24 1.72 14.52 1.72 11.21c0-3.32 2.14-5.07 4.22-5.07 1.1 0 2.02.72 2.67.72.65 0 1.72-.72 3-.72 1.25 0 2.37.45 3.12 1.55-2.52 1.5-2.12 5.08.38 6.13-.9 1.33-2.05 2.76-3.04 3.73-.01.01-.01.01 0 0zM12.03 5.4c-.02-2.13 1.75-3.9 3.85-3.98.05 2.25-2.02 4.12-3.85 3.98z" />
-            </svg>
-            macOS
-          </button>
-        </div>
-
-        <div class="run-stepper">
-          <div class="run-step active">
-            <div class="step-indicator">1</div>
-            <div class="step-content">
-              <h4>Open your Terminal</h4>
-              <div class="platform-content win">
-                <p>Press the <b>Windows Key</b>, type <b>"PowerShell"</b>, and hit Enter.</p>
-              </div>
-              <div class="platform-content mac" style="display:none">
-                <p>Press <b>Cmd + Space</b>, type <b>"Terminal"</b>, and hit Enter.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="run-step">
-            <div class="step-indicator">2</div>
-            <div class="step-content">
-              <h4>Navigate & Start</h4>
-              <p>Type these commands into your terminal to start the proxy server.</p>
-
-              <div class="mac-window" style="margin-top: 1rem;">
-                <button class="copy-btn" onclick="copyCommand('cd textlab\nnode server.js', this)">
-                  <svg class="icon" style="width:12px;height:12px;margin-right:4px;" viewBox="0 0 24 24">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  Copy Commands
-                </button>
-                <div class="mac-header">
-                  <div class="mac-dots">
-                    <div class="mac-dot r"></div>
-                    <div class="mac-dot y"></div>
-                    <div class="mac-dot g"></div>
-                  </div>
-                  <div class="mac-title">Terminal</div>
-                </div>
-                <div class="mac-body">
-                  <pre><code><span class="token-prompt">></span> <span class="token-keyword">cd</span> <span class="platform-content win" style="display:inline">"C:\path\to\textlab"</span><span class="platform-content mac" style="display:none">"~/Desktop/textlab"</span>
-<span class="token-prompt">></span> <span class="token-keyword">node</span> server.js
-
-<span class="token-string">✅ Proxy running at http://localhost:3000</span></code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="run-step">
-            <div class="step-indicator">3</div>
-            <div class="step-content">
-              <h4>Launch in Browser</h4>
-              <p>Your AI application is now being served locally. Open it to start using it!</p>
-
-              <div class="browser-mockup">
-                <div class="browser-bar">
-                  <div class="browser-dots">
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                    <div class="browser-dot"></div>
-                  </div>
-                  <div class="browser-address">
-                    <span>http://localhost:3000</span>
-                    <a href="http://localhost:3000" target="_blank" class="browser-link">Visit Site →</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="callout success" style="margin-top: 2.5rem;">
-          <div class="callout-icon"><svg class="icon" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg></div>
-          <div class="callout-content">
-            <p><strong>Success!</strong> Your app is running. Remember that the first call may take ~20 seconds to load
-              the model. To stop the server later, press <code class="inline-code">Ctrl + C</code>.</p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /project-tab-textlab -->
   </section>
 
   <div class="divider"></div>
 
-  <!-- ═══ SECTION 4: DEBUGGING ═══ -->
-  <section class="content-section section-red" id="debugging">
-    <div id="mentorship" style="position: absolute; top: -100px;"></div>
-    <span class="section-tag">
-      <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-        <path d="m8 2 1.88 1.88" />
-        <path d="M14.12 3.88 16 2" />
-        <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" />
-        <path d="M12 20c-3.31 0-6-2.69-6-6v-1h4v-1H6v-1h3V8h1v3h4V8h1v3h3v1h-3v1h4v1c0 3.31-2.69 6-6 6Z" />
-      </svg>
-      Part 4 — Troubleshooting
-    </span>
-    <h2>What if it breaks?</h2>
-    <p>Coding is 10% writing code and 90% figuring out why it doesn't work. If your app isn't behaving, don't worry!
-      Here are the most common "gotchas" and how to fix them.</p>
-
-    <div style="margin-top: 3rem;">
-      <!-- Issue 1 -->
-      <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem; align-items: flex-start;">
-        <div
-          style="flex-shrink: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: rgba(244, 63, 94, 0.1); border-radius: 14px; color: #f43f5e;">
-          <svg class="icon" style="width: 26px; height: 26px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-          </svg>
-        </div>
-        <div>
-          <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 700;">The
-            "White Screen" Mystery</h4>
-          <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">
-            If your page is completely blank, don't panic! Right-click anywhere and select <strong>Inspect >
-              Console</strong>.
-            The browser will show you red error messages that pinpoint the exact line where a typo might be hiding.
-          </p>
-        </div>
-      </div>
-
-      <!-- Issue 2 -->
-      <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem; align-items: flex-start;">
-        <div
-          style="flex-shrink: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: rgba(244, 63, 94, 0.1); border-radius: 14px; color: #f43f5e;">
-          <svg class="icon" style="width: 26px; height: 26px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
-            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
-            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-          </svg>
-        </div>
-        <div>
-          <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 700;">"Address
-            already in use"</h4>
-          <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">
-            This error means another server is already hogging Port 3000.
-            <strong>The Fix:</strong> Close all your terminal windows and restart, or edit <code>server.js</code> to use
-            a different port like 3001.
-          </p>
-        </div>
-      </div>
-
-      <!-- Issue 3 -->
-      <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem; align-items: flex-start;">
-        <div
-          style="flex-shrink: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: rgba(244, 63, 94, 0.1); border-radius: 14px; color: #f43f5e;">
-          <svg class="icon" style="width: 26px; height: 26px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
-            </path>
-          </svg>
-        </div>
-        <div>
-          <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 700;">401
-            Unauthorized Error</h4>
-          <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">
-            This is almost always a Token problem. Make sure your Hugging Face API key doesn't have any accidental
-            spaces at the start or end when you copy it.
-          </p>
-        </div>
-      </div>
-
-      <!-- Issue 4 -->
-      <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem; align-items: flex-start;">
-        <div
-          style="flex-shrink: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: rgba(244, 63, 94, 0.1); border-radius: 14px; color: #f43f5e;">
-          <svg class="icon" style="width: 26px; height: 26px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-        </div>
-        <div>
-          <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 700;">429 Too
-            Many Requests</h4>
-          <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">
-            You're moving too fast for the free tier! Hugging Face limits how many messages you can send per minute.
-            Simply wait 60 seconds and try again—it will reset automatically.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Final Support Callout -->
-    <div class="callout mentor" style="margin-top: 4rem;">
-      <div class="callout-icon">
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-      </div>
-      <div class="callout-content">
-        <p><strong>Still stuck? Don't worry!</strong></p>
-        <p>If you've tried everything and it still isn't working, just raise your hand or reach out to the
-          <strong>mentors</strong>. We are here to help you debug and get your AI running in no time!
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SECTION: PROMPT FOR YOUR APP ═══ -->
+  <!-- ═══ SECTION 4: NEXT STEPS ═══ -->
   <section class="content-section section-blue" id="app-prompt">
     <span class="section-tag">
       <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
@@ -6259,13 +5281,13 @@ req.<span class="token-function">on</span>(<span class="token-string">"end"</spa
         <path d="m6 8-4 4 4 4" />
         <path d="m14.5 4-5 16" />
       </svg>
-      Part 5 — Next Steps
+      Part 4 — Next Steps
     </span>
     <h2>Prompt for your app</h2>
     <p>Ready to build something unique? Use this high-powered prompt to generate a completely new AI application based
       on what you've learned. Just copy it and paste it into your favorite AI coding assistant!</p>
 
-    <div class="mac-window">
+    <div class="mac-window" style="width: fit-content; max-width: 100%;">
       <button class="copy-btn" onclick="copyCommand(document.getElementById('ai-app-prompt-text').innerText, this)">
         <svg class="icon" style="width:12px;height:12px;margin-right:4px;" viewBox="0 0 24 24">
           <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -6290,19 +5312,7 @@ req.<span class="token-function">on</span>(<span class="token-string">"end"</spa
       </div>
       <div class="mac-body" style="padding: 0;">
         <div id="ai-app-prompt-text"
-          style="color: #fafafa; font-family: var(--font-sans); line-height: 1.8; font-size: 1.25rem; font-weight: 500; white-space: pre-wrap; cursor: text; padding: 2.5rem; border-radius: 0 0 12px 12px;">Write another AI-powered web application similar to the attached server.js and index.html files. Maintain the same overall sample app structure, connection flow, and coding style.
-
-<span style="font-weight: 800; color: #fff;">[DESCRIBE YOUR UNIQUE AI FEATURE HERE]</span>
-
-<strong>Implementation Checklist:</strong>
-- Modify both server.js and index.html as needed
-- Connect to a suitable AI model from Hugging Face
-- Accept and process user input from the webpage
-- Display the results clearly in a modern UI
-- Keep the sample app clean and student-friendly
-
-<strong>Implementation Guidelines:</strong>
-Only change the parts necessary for the new feature, while keeping the remaining structure and workflow identical to the base sample app.</div>
+          style="color: #fafafa; font-family: var(--font-sans); line-height: 1.6; font-size: 1.1rem; font-weight: 500; white-space: pre-wrap; cursor: text; padding: 2rem; border-radius: 0 0 12px 12px;">Generate an HTML app exactly similar to the attached index.html app for the given (also attached) server.js. An asynchronous function in the HTML app should send <span style="font-weight: 800; color: #fff;">[INPUT_TYPE]</span> to the Hugging Face model <span style="font-weight: 800; color: #fff;">[MODEL_NAME]</span> and gets the <span style="font-weight: 800; color: #fff;">[OUTPUT_TYPE]</span> of the content.</div>
       </div>
     </div>
 
@@ -6743,7 +5753,7 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
             <line x1="12" y1="22.08" x2="12" y2="12" />
           </svg>
-          Top Hugging Face Models
+          In Top Hugging Face Models:
         </h2>
         <button class="models-close" onclick="closeModelsModal(null)" aria-label="Close modal">
           <svg class="icon" viewBox="0 0 24 24">
@@ -6753,6 +5763,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
       </div>
 
       <div class="models-grid">
+        <p
+          style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.6; padding: 0 0.5rem;">
+          Here are some other models, we are handing out to you to use in your sample apps.
+        </p>
 
         <!-- 1. Kimi K2.5 (1.1T) -->
         <div class="model-card">
@@ -6768,8 +5782,11 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Moonshot AI</span>
           </div>
-          <p>Native multimodal agentic model that seamlessly integrates vision and language with advanced reasoning
-            capabilities.</p>
+          <p>This model is like a super-reader that never gets tired. It can read thousands of pages of books or long
+            legal papers in seconds and tell you exactly what’s inside. It’s perfect if you have a huge pile of
+            documents and need to find one small detail without reading everything yourself. You can even ask it to
+            summarize a whole library of information just for you, making it the best tool for students or researchers
+            with too much to read.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -6779,16 +5796,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Agentic Tool Use</span>
             <span class="model-cap">Task Swarms</span>
           </div>
-          <p class="model-summary">A high-performance agentic model designed for complex visual and text-based task
-            orchestration.</p>
-          <a href="https://huggingface.co/moonshotai/Kimi-K2.5" target="_blank" class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A friendly super-reader that helps you find answers in huge piles of documents and
+            long books instantly. It's like having a personal librarian who has read everything for you.</p>
         </div>
 
         <!-- 2. DeepSeek-V4 Flash -->
@@ -6805,8 +5814,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">DeepSeek</span>
           </div>
-          <p>A next-generation model that firmly establishes itself as a leader in open-source AI, bridging the gap with
-            top closed-source models in reasoning and agentic workflows.</p>
+          <p>This is a very fast AI assistant that helps you build things quickly. Imagine a helper that can write
+            computer code with you or answer customer questions in a split second. It’s built to handle thousands of
+            people at the same time without getting slow or confused. It’s a great choice for beginners making their
+            first app that needs to talk to lots of users very fast and efficiently.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -6816,17 +5827,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Agentic Tasks</span>
             <span class="model-cap">Knowledge Depth</span>
           </div>
-          <p class="model-summary">A high-performance model that rivals state-of-the-art closed systems in logic and
-            autonomy.</p>
-          <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash?inference_provider=novita" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A lightning-fast helper for writing code and answering many people at once. It's the
+            best choice for making apps that feel snappy and responsive to every user.</p>
         </div>
 
         <!-- 3. DeepSeek-R1 (685B) -->
@@ -6843,7 +5845,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">DeepSeek</span>
           </div>
-          <p>Advanced reasoning model. Thinks step-by-step like humans for complex problem solving.</p>
+          <p>This AI is a deep thinker that likes to take its time to get the answer right. It’s great at finding hidden
+            mistakes or unfair "biases" in writing that humans might easily miss. If you have a really hard math puzzle
+            or a tricky scientific problem, this model will think step-by-step to help you solve it. It’s like having a
+            genius professor who explains every single part of their logic to you so you can learn while you work.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -6853,16 +5858,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Advanced Coding</span>
             <span class="model-cap">Step-by-Step Explanations</span>
           </div>
-          <p class="model-summary">A reasoning-focused AI that excels in logical problem-solving.</p>
-          <a href="https://huggingface.co/deepseek-ai/DeepSeek-R1?inference_provider=novita" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A "genius professor" that thinks carefully and explains every step of a hard problem.
+            Perfect for finding mistakes in logic or solving difficult math and science puzzles.</p>
         </div>
 
         <!-- 4. Qwen 2.5 72B (72B) -->
@@ -6879,7 +5876,11 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Alibaba</span>
           </div>
-          <p>Large 72B parameter model by Alibaba. Strong multilingual and technical performance.</p>
+          <p>This model is a world traveler that speaks over 29 languages perfectly. It can help you build a giant
+            help-center for people from all over the world or organize complex office work. If you need to translate
+            difficult technical words or write formal documents in different languages, this is the best tool for the
+            job. It's incredibly smart and reliable, making it perfect for beginners who want to build a
+            professional-looking project.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -6889,16 +5890,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Essay Writing</span>
             <span class="model-cap">Logical Reasoning</span>
           </div>
-          <p class="model-summary">A powerful multilingual AI for accurate and detailed outputs.</p>
-          <a href="https://huggingface.co/Qwen/Qwen2.5-72B-Instruct?inference_provider=novita" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A smart world-traveler that translates many languages and helps organize office work.
+            It's great for making projects that need to work for people everywhere.</p>
         </div>
 
         <!-- 5. QwQ-32B (32B) -->
@@ -6915,8 +5908,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Alibaba Qwen</span>
           </div>
-          <p>The reasoning-focused model of the Qwen series, designed to "think" and solve exceptionally hard problems
-            through advanced logical reasoning.</p>
+          <p>Use this model when you are stuck on a very difficult computer problem or a logic riddle. It’s designed to
+            troubleshoot broken software and solve puzzles that other AIs find "impossible." It doesn’t just guess the
+            answer; it makes sure every part of the solution is mathematically correct and solid. It’s your best friend
+            for building complex, error-free apps that need to follow very strict rules.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -6926,16 +5921,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Complex Problem Solving</span>
             <span class="model-cap">Math & Logic</span>
           </div>
-          <p class="model-summary">A high-performance reasoning model that rivals state-of-the-art AI in solving
-            difficult technical challenges.</p>
-          <a href="https://huggingface.co/Qwen/QwQ-32B" target="_blank" class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A master at solving "impossible" riddles and fixing broken computer code. It's the
+            best tool for making sure your app's logic is perfect and error-free.</p>
         </div>
 
         <!-- 6. Gemma 4 31B-it -->
@@ -6952,8 +5939,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Google DeepMind</span>
           </div>
-          <p>Google's next-gen multimodal powerhouse that natively processes text, images, video, and audio with a
-            massive 256K context window.</p>
+          <p>This AI has "eyes" and "ears" for your projects. You can give it a long video or a recording of a meeting,
+            and it will tell you exactly what happened. It can spot tiny details in a movie or translate a conversation
+            from one language to another while it’s happening. It’s perfect for making apps that understand more than
+            just plain text—it understands the whole world of sights and sounds.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -6963,17 +5952,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Native Agent Support</span>
             <span class="model-cap">140+ Languages</span>
           </div>
-          <p class="model-summary">The ultimate choice for processing complex data like videos and huge documents with
-            state-of-the-art logic.</p>
-          <a href="https://huggingface.co/google/gemma-4-31b-it?inference_provider=novita" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">An AI with eyes and ears that can watch videos and listen to audio for you. Perfect
+            for summarizing movies, meetings, or translating live conversations.</p>
         </div>
 
         <!-- 7. Gemma 2 27B (27B) -->
@@ -6990,7 +5970,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Google Deepmind</span>
           </div>
-          <p>27B parameter model by Google Deepmind. Uses advanced attention mechanisms for high-quality outputs.</p>
+          <p>This is a very polite and smart teacher model. It’s perfect for building a school tutor or a research
+            helper that explains hard topics in a way that’s easy for kids or students to understand. It uses a very
+            professional tone, making it safe and reliable for educational apps. You can trust it to give high-quality
+            answers that are easy for everyone to follow, even if they've never used AI before.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7000,16 +5983,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Writing</span>
             <span class="model-cap">Reasoning</span>
           </div>
-          <p class="model-summary">A high-quality AI model for learning and analysis.</p>
-          <a href="https://huggingface.co/google/gemma-2-27b-it?inference_provider=novita" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A polite and smart teacher that explains hard topics in simple words. It's the best
+            choice for making learning apps and helpful school tutors.</p>
         </div>
 
         <!-- 8. Meta Llama 3.1 8B (8B) -->
@@ -7026,7 +6001,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Meta</span>
           </div>
-          <p>Lightweight AI by Meta for beginners. Fast and efficient, runs on normal computers.</p>
+          <p>This is a small but mighty AI that can run right on your own laptop without needing the internet. It’s the
+            best choice for beginners who want to build private apps that keep all your data safe on your own computer.
+            Even though it’s small, it’s very smart and can help you write stories, fix code, or answer general
+            questions instantly. It’s fast, simple, and a great place to start your AI journey.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7037,16 +6015,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Reasoning</span>
             <span class="model-cap">Translation</span>
           </div>
-          <p class="model-summary">A fast, beginner-friendly AI assistant for study, coding, and general tasks.</p>
-          <a href="https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct?inference_provider=novita"
-            target="_blank" class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A small but mighty helper that works on your own computer without needing the
+            internet. Perfect for beginners who want to keep their work private and fast.</p>
         </div>
         <!-- 9. Mistral 7B Instruct (7B) -->
         <div class="model-card">
@@ -7062,8 +6032,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Mistral AI</span>
           </div>
-          <p>A compact but highly efficient model from Mistral AI that follows instructions brilliantly and often
-            outperforms much larger models.</p>
+          <p>This AI is great at following your specific rules and "characters." If you want to build a chatbot that
+            sounds like a pirate, a professional doctor, or a friendly robot, this model will follow your instructions
+            exactly. It’s small and fast, making it perfect for trying out new ideas for creative writing tools or
+            unique role-playing bots. It does exactly what you tell it to do, no matter how creative you get.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7073,16 +6045,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Fast Inference</span>
             <span class="model-cap">Efficient Q&A</span>
           </div>
-          <p class="model-summary">An excellent "all-rounder" for beginners who need high performance in a small, fast
-            package.</p>
-          <a href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1" target="_blank" class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A helpful robot that follows your rules exactly. Use it to make chatbots with unique
+            personalities, like a pirate or a helpful doctor, in just a few minutes.</p>
         </div>
         <!-- 10. Qwen2 1.5B Instruct (1.5B) -->
         <div class="model-card">
@@ -7098,8 +6062,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Alibaba Qwen</span>
           </div>
-          <p>A super-lightweight model designed to run on almost any laptop while remaining surprisingly smart for its
-            size.</p>
+          <p>This is the smallest "pocket AI" that can even run on a phone or a very old laptop. It’s great for making
+            quick summaries of short notes or giving simple advice when you don't have much computer power to spare.
+            It’s the perfect first step for absolute beginners who want to see how AI works without needing any
+            expensive hardware. It’s tiny, fast, and surprisingly helpful for simple everyday tasks.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7109,16 +6075,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Step-by-Step Help</span>
             <span class="model-cap">Fast Summaries</span>
           </div>
-          <p class="model-summary">The perfect choice for beginners with modest hardware who want a fast, multi-lingual
-            AI assistant.</p>
-          <a href="https://huggingface.co/Qwen/Qwen2-1.5B-Instruct" target="_blank" class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A tiny "pocket AI" that works on phones and old computers. It's the perfect first
+            step for beginners to learn how AI can help with simple everyday notes.</p>
         </div>
 
         <!-- 11. RoBERTa Sentiment -->
@@ -7135,7 +6093,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">CardiffNLP</span>
           </div>
-          <p>A specialized RoBERTa model fine-tuned on 124 million tweets for highly accurate sentiment analysis.</p>
+          <p>This AI is like an "emotion detector" for the internet. It can read millions of social media posts and tell
+            you if people are happy, angry, or worried about a brand or a product. It helps companies understand how
+            their customers feel and fix problems before they get big. It’s the best tool for understanding the "vibe"
+            of a large group of people in an instant.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7144,17 +6105,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Social Media Monitoring</span>
             <span class="model-cap">Public Opinion Mining</span>
           </div>
-          <p class="model-summary">The gold standard for understanding emotional tone and polarity in short-form text.
-          </p>
-          <a href="https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">An "emotion detector" that reads social media to see if people are happy or sad. It's
+            perfect for understanding how a big group of people feels about something.</p>
         </div>
 
         <!-- 12. DistilRoBERTa Emotion -->
@@ -7171,8 +6123,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">J. Hartmann</span>
           </div>
-          <p>An efficient, distilled version of RoBERTa trained to detect seven basic human emotions in English text.
-          </p>
+          <p>This model is an expert at understanding human feelings and empathy. It can tell the difference between
+            joy, sadness, fear, and anger in a short message or email. It’s perfect for making customer support apps
+            that can tell if a user is frustrated and needs a friendly human to help them out. It helps you build apps
+            that are kind and truly understand how people feel deep down.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7181,17 +6135,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Customer Support</span>
             <span class="model-cap">Empathy Analysis</span>
           </div>
-          <p class="model-summary">Quickly identifies joy, sadness, anger, fear, and more to understand user intent
-            deeply.</p>
-          <a href="https://huggingface.co/j-hartmann/emotion-english-distilroberta-base" target="_blank"
-            class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A kind AI that understands feelings like joy or anger. Use it to make customer
+            support apps that know when to be extra friendly to a frustrated user.</p>
         </div>
 
         <!-- 13. BART Large MNLI -->
@@ -7203,8 +6148,10 @@ Only change the parts necessary for the new feature, while keeping the remaining
             </div>
             <span class="model-creator">Facebook</span>
           </div>
-          <p>A powerful model that performs zero-shot classification, allowing you to categorize text without any
-            specific training.</p>
+          <p>This model is a master at sorting things into different groups or labels. You don’t even have to teach it
+            what the groups are beforehand—you can just give it a new list of labels on the spot! It’s useful for news
+            apps that need to sort hundreds of articles into new topics every single day. It’s like a smart filing clerk
+            that never gets confused by new categories or labels.</p>
           <div class="model-caps">
             <strong
               style="font-size: 0.85rem; color: var(--text-primary); margin-right: 0.2rem; align-self: center;">Best
@@ -7213,16 +6160,8 @@ Only change the parts necessary for the new feature, while keeping the remaining
             <span class="model-cap">Dynamic Tagging</span>
             <span class="model-cap">Topic discovery</span>
           </div>
-          <p class="model-summary">A versatile tool for categorizing content into any custom labels defined on the fly.
-          </p>
-          <a href="https://huggingface.co/facebook/bart-large-mnli" target="_blank" class="model-link">
-            Try on Hugging Face
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+          <p class="model-summary">A smart filing clerk that sorts articles and notes into any categories you choose.
+            It's great for making apps that organize information automatically on the fly.</p>
         </div>
 
 
@@ -7422,8 +6361,6 @@ Only change the parts necessary for the new feature, while keeping the remaining
           gap: 0;
           position: relative;
           margin-top: 2rem;
-          margin-left: -37px;
-          /* Align with the main timeline */
         }
 
         .run-step {
@@ -7441,7 +6378,7 @@ Only change the parts necessary for the new feature, while keeping the remaining
           content: '';
           position: absolute;
           left: 19px;
-          top: 32px;
+          top: 40px;
           bottom: 0;
           width: 2px;
           background: var(--border);
@@ -7611,14 +6548,6 @@ Only change the parts necessary for the new feature, while keeping the remaining
       </svg>
       Sample App
     </a>
-    <a href="#debugging">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path
-          d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
-        </path>
-      </svg>
-      FIX
-    </a>
   </nav>
 
   <!-- Image Expansion Overlay -->
@@ -7648,7 +6577,7 @@ Only change the parts necessary for the new feature, while keeping the remaining
 
     // Scroll Spy for Bottom Navbar
     window.addEventListener('scroll', () => {
-      const sections = ['hero', 'ml-intro', 'hf-intro', 'tutorial', 'debugging'];
+      const sections = ['hero', 'ml-intro', 'hf-intro', 'tutorial'];
       const navLinks = document.querySelectorAll('.bottom-nav a');
 
       let currentSection = "hero"; // Default to home
@@ -7670,6 +6599,22 @@ Only change the parts necessary for the new feature, while keeping the remaining
         }
       });
     });
+
+    function toggleDeepDive() {
+      const container = document.getElementById('code-deep-dive');
+      const btnText = document.getElementById('deep-dive-btn-text');
+      const btn = document.getElementById('deep-dive-btn');
+      
+      container.classList.toggle('collapsed');
+      
+      if (container.classList.contains('collapsed')) {
+        btnText.innerText = " ";
+        btn.querySelector('svg').style.transform = "rotate(-90deg)";
+      } else {
+        btnText.innerText = " ";
+        btn.querySelector('svg').style.transform = "rotate(0deg)";
+      }
+    }
   </script>
 </body>
 

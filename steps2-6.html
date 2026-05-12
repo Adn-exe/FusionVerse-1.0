@@ -1,0 +1,247 @@
+      <!-- STEP 2 -->
+      <div class="tutorial-step">
+        <div class="step-number">2</div>
+        <h3>The Frontend Code (index.html)</h3>
+        <p>When you click the "Generate Quiz" button, JavaScript inside your <code class="inline-code">index.html</code>
+          sends your notes to your local server. The code looks like this:</p>
+
+        <div class="mac-window">
+          <div class="mac-header">
+            <div class="mac-dots">
+              <div class="mac-dot r"></div>
+              <div class="mac-dot y"></div>
+              <div class="mac-dot g"></div>
+            </div>
+            <div class="mac-title">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14 2 14 8 20 8" />
+                <polyline points="10 13 8 15 10 17" />
+                <polyline points="14 13 16 15 14 17" />
+              </svg>
+              index.html — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
+            </div>
+          </div>
+          <div class="mac-body">
+            <pre><code><span class="anatomy-line" data-info="&lt;code&gt;fetch('/analyze')&lt;/code&gt; sends your notes to the server we built. The &lt;code&gt;await&lt;/code&gt; keyword pauses here until the server replies with the generated questions."><span class="token-keyword">const</span> res <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-function">fetch</span>(<span class="token-string">'/analyze'</span>, {
+    method: <span class="token-string">'POST'</span>,
+    headers: { <span class="token-string">'Content-Type'</span>: <span class="token-string">'application/json'</span> },</span>
+    body: JSON.<span class="token-function">stringify</span>({
+        model: <span class="token-string">"Qwen/Qwen2.5-7B-Instruct"</span>,
+<span class="anatomy-line" data-info="The &lt;code&gt;messages&lt;/code&gt; array tells the AI how to behave. The 'system' role sets its personality (e.g. 'Act like a teacher'), and the 'user' role contains the actual study notes.">        messages: [
+            { role: <span class="token-string">"system"</span>, content: <span class="token-string">"Generate 5 quiz questions..."</span> },
+            { role: <span class="token-string">"user"</span>, content: <span class="token-string">"Here are my notes: ..."</span> }
+        ],</span>
+        max_tokens: 600
+    })
+});</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkpoint: API Implementation -->
+      <div style="max-width:800px; margin:0 auto; padding: 0 0 2rem;">
+        <div class="checkpoint" id="cp-api">
+          <div class="checkpoint-q">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            Quick Check: In the code above, what does the "system" role do in the messages array?
+          </div>
+          <div class="cp-options">
+            <div class="cp-opt" onclick="checkCP(this,'cp-api','wrong')"><span class="cp-letter">A</span> Contains the
+              student's study notes</div>
+            <div class="cp-opt" onclick="checkCP(this,'cp-api','correct')"><span class="cp-letter">B</span> Sets the
+              AI's
+              personality and instructions</div>
+            <div class="cp-opt" onclick="checkCP(this,'cp-api','wrong')"><span class="cp-letter">C</span> Contains the
+              API
+              key for authentication</div>
+          </div>
+          <div class="cp-feedback" id="cp-api-fb"></div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="tutorial-step">
+        <div class="step-number">3</div>
+        <h3>Calling the Server: <code class="inline-code">callHF()</code></h3>
+        <p>The <code class="inline-code">callHF()</code> function is a reusable wrapper that handles the
+          communication between your frontend and the proxy server.
+        </p>
+
+        <div class="mac-window">
+          <div class="mac-header">
+            <div class="mac-dots">
+              <div class="mac-dot r"></div>
+              <div class="mac-dot y"></div>
+              <div class="mac-dot g"></div>
+            </div>
+            <div class="mac-title">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14 2 14 8 20 8" />
+                <polyline points="10 13 8 15 10 17" />
+                <polyline points="14 13 16 15 14 17" />
+              </svg>
+              index.html — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
+            </div>
+          </div>
+          <div class="mac-body">
+            <pre><code><span class="token-comment">// Reusable function to call the server</span>
+<span class="anatomy-line" data-info="This helper wraps all the fetch logic in one place. Any function in your app can call &lt;code&gt;callHF(token, messages, 400)&lt;/code&gt; and get back the AI's text response."><span class="token-keyword">async function</span> <span class="token-function">callHF</span>(token, messages, maxTokens) {</span>
+    <span class="token-keyword">const</span> res <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-function">fetch</span>(<span class="token-string">'/analyze'</span>, {
+        method: <span class="token-string">'POST'</span>,
+        headers: { <span class="token-string">'Content-Type'</span>: <span class="token-string">'application/json'</span> },
+        body: JSON.<span class="token-function">stringify</span>({
+            model: HF_MODEL, messages, max_tokens: maxTokens, token
+        })
+    });
+
+    <span class="anatomy-line" data-info="The AI returns a deeply nested JSON object. This line drills into &lt;code&gt;data.choices[0].message.content&lt;/code&gt; to extract just the text the AI generated."><span class="token-keyword">const</span> data <span class="token-operator">=</span> <span class="token-keyword">await</span> res.<span class="token-function">json</span>();
+    <span class="token-keyword">return</span> data.choices[0].message.content;</span>
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="tutorial-step">
+        <div class="step-number">4</div>
+        <h3>The Proxy Server (server.js)</h3>
+        <p>This <code class="inline-code">server.js</code> file does two things: <strong>(a)</strong> serves your HTML
+          page, and <strong>(b)</strong> securely forwards requests to Hugging Face.</p>
+
+        <div class="mac-window">
+          <div class="mac-header">
+            <div class="mac-dots">
+              <div class="mac-dot r"></div>
+              <div class="mac-dot y"></div>
+              <div class="mac-dot g"></div>
+            </div>
+            <div class="mac-title">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <line x1="10" y1="9" x2="8" y2="9" />
+              </svg>
+              server.js — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
+            </div>
+          </div>
+          <div class="mac-body">
+            <pre><code><span class="token-comment">// 1. Load built-in Node.js tools</span>
+<span class="token-keyword">const</span> http <span class="token-operator">=</span> <span class="token-function">require</span>(<span class="token-string">"http"</span>);
+<span class="token-keyword">const</span> fs   <span class="token-operator">=</span> <span class="token-function">require</span>(<span class="token-string">"fs"</span>);
+
+<span class="token-keyword">const</span> <span class="token-keyword">PORT</span> <span class="token-operator">=</span> 3000;
+
+<span class="token-comment">// 2. Create the server</span>
+<span class="anatomy-line" data-info="This creates our web server. The &lt;code&gt;async&lt;/code&gt; keyword means the server won't freeze while waiting for the Hugging Face AI to reply — it can keep handling other things.">const server = http.createServer(async (req, res) => {</span>
+
+    <span class="token-comment">// PART A: Serve the HTML page</span>
+    <span class="anatomy-line" data-info="When you open &lt;code&gt;localhost:3000&lt;/code&gt; in your browser, it sends a GET request. The server reads your &lt;code&gt;index.html&lt;/code&gt; file and sends it back so the browser can display it."><span class="token-keyword">if</span> (req.method <span class="token-operator">===</span> <span class="token-string">"GET"</span>) {
+        fs.readFile("./index.html", (err, data) => {
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end(data);
+        });
+        return;
+    }</span>
+
+    <span class="token-comment">// PART B: Forward AI requests to Hugging Face</span>
+    <span class="anatomy-line" data-info="When your page sends study notes, it arrives here as a POST request. The server attaches your secret API key and forwards everything to Hugging Face — keeping the key hidden from the browser."><span class="token-keyword">if</span> (req.method <span class="token-operator">===</span> <span class="token-string">"POST"</span> <span class="token-operator">&&</span> req.url <span class="token-operator">===</span> <span class="token-string">"/analyze"</span>) {
+        // ... Code that securely sends notes to Hugging Face API ...
+    }</span>
+});
+
+<span class="token-comment">// 3. Start listening</span>
+server.<span class="token-function">listen</span>(<span class="token-keyword">PORT</span>, () <span class="token-keyword">=></span> {
+    console.<span class="token-function">log</span>(<span class="token-string">`Server running at http://localhost:${PORT}`</span>);
+});</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="tutorial-step">
+        <div class="step-number">5</div>
+        <h3>Why a Proxy? The CORS Problem</h3>
+        <p>You may now have a question: <em>"Why are we using a server? Why can't the HTML page directly talk to Hugging
+            Face?"</em></p>
+        <p>There are two major reasons. First, the <strong>security problem</strong>: your API key would be visible in
+          the browser for anyone to steal. Second, the <strong>CORS problem</strong>: browsers block direct requests to
+          Hugging Face for security reasons.</p>
+
+
+        <p><strong>What is CORS?</strong> It's a browser security rule (Cross-Origin Resource Sharing). When your page
+          at <code class="inline-code">localhost:3000</code> tries to call another domain, the browser blocks it unless
+          that domain explicitly permits it.</p>
+
+        <div class="callout success">
+          <div class="callout-icon"><svg class="icon" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="callout-content">
+            <p><strong>The Solution:</strong> Our Node.js server acts as a "Proxy" (a middleman). It securely holds your
+              API key and handles the communication with Hugging Face, bypassing browser restrictions entirely.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="tutorial-step">
+        <div class="step-number">6</div>
+        <h3>Inside the Server: The Proxy Handler</h3>
+        <p>Step 4 showed you the skeleton. Now let's look at the <strong>actual</strong> code inside the POST handler —
+          this is where the server secretly talks to Hugging Face on behalf of your browser.</p>
+
+        <div class="mac-window">
+          <div class="mac-header">
+            <div class="mac-dots">
+              <div class="mac-dot r"></div>
+              <div class="mac-dot y"></div>
+              <div class="mac-dot g"></div>
+            </div>
+            <div class="mac-title">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <line x1="10" y1="9" x2="8" y2="9" />
+              </svg>
+              server.js — <span style="opacity:0.5; font-weight:400;">hover the dotted lines</span>
+            </div>
+          </div>
+          <div class="mac-body">
+            <pre><code><span class="anatomy-line" data-info="The server collects incoming data in chunks (like reading a letter paragraph by paragraph) and joins them together into a single &lt;code&gt;body&lt;/code&gt; string."><span class="token-keyword">let</span> body <span class="token-operator">=</span> <span class="token-string">""</span>;
+req.<span class="token-function">on</span>(<span class="token-string">"data"</span>, chunk <span class="token-keyword">=></span> { body <span class="token-operator">+=</span> chunk; });</span>
+
+<span class="anatomy-line" data-info="Once all chunks arrive, we parse the JSON and extract the fields: the model name, the messages array, token, and settings like max_tokens.">req.<span class="token-function">on</span>(<span class="token-string">"end"</span>, <span class="token-keyword">async</span> () <span class="token-keyword">=></span> {
+    <span class="token-keyword">const</span> payload <span class="token-operator">=</span> JSON.<span class="token-function">parse</span>(body);
+    <span class="token-keyword">const</span> { model, messages, max_tokens, token } <span class="token-operator">=</span> payload;</span>
+
+    <span class="token-comment">// The actual API call to Hugging Face</span>
+    <span class="anatomy-line" data-info="This is the core line. The server uses &lt;code&gt;fetch&lt;/code&gt; to call the Hugging Face router API. Notice how the &lt;code&gt;Authorization&lt;/code&gt; header is added here on the server — this token never touches the browser."><span class="token-keyword">const</span> hfResponse <span class="token-operator">=</span> <span class="token-keyword">await</span> <span class="token-function">fetch</span>(
+        <span class="token-string">"https://router.huggingface.co/v1/chat/completions"</span>,
+        {
+            method: <span class="token-string">"POST"</span>,
+            headers: {
+                <span class="token-string">"Authorization"</span>: `Bearer ${token}`,
+                <span class="token-string">"Content-Type"</span>: <span class="token-string">"application/json"</span>
+            },
+            body: JSON.<span class="token-function">stringify</span>({ model, messages, max_tokens })
+        }
+    );</span>
+
+    <span class="anatomy-line" data-info="The Hugging Face server replies with JSON. We read it and pass it straight back to the browser with the same status code — acting as a transparent relay."><span class="token-keyword">const</span> data <span class="token-operator">=</span> <span class="token-keyword">await</span> hfResponse.<span class="token-function">json</span>();
+    res.<span class="token-function">writeHead</span>(hfResponse.status, { <span class="token-string">"Content-Type"</span>: <span class="token-string">"application/json"</span> });
+    res.<span class="token-function">end</span>(JSON.<span class="token-function">stringify</span>(data));</span>
+});</code></pre>
+          </div>
+        </div>
+      </div>
